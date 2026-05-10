@@ -1,11 +1,11 @@
 #pragma once
-#include <iostream>//System Libraries
+#include <iostream> //System Libraries
 #include <conio.h>
 #include <Windows.h>
 #include <time.h>
 #include <Xinput.h>
 
-#include "script.h"//Local libraries
+#include "script.h" //Local libraries
 #include "input.h"
 
 using namespace std;
@@ -65,7 +65,7 @@ void NPCBarOutput(int i)
 		cout << "EP:" << npc[i][npc_energy];
 	}
 }
-/*void BarOutput(	//DO NOT DELETE!!! KEEP IT FOR ENEMIES' HUD
+/*void BarOutput(	// DO NOT DELETE!!! KEEP IT FOR ENEMIES' HUD
 	char screen[64][64], int colorback[64][64], int colorfront[64][64], 
 	char *name, int Value, int MaxValue, int y, int x,
 	int BarCell, int BorderCellLeft, int BorderCellRight,
@@ -86,21 +86,21 @@ void NPCBarOutput(int i)
 	}
 }*/
 void TextOutput(
-	char screen[64][64], int colorback[64][64], int colorfront[64][64], 
-	char *text, int y, int x, int backplan, int textcolor, int border)
+	char screen[64][64], 
+	char *text, int coordY, int coordX, int backplan, int textcolor, int border)
 {
 	for(int i = 0, k = 0; text[i] != 0; i++, k++)
 	{
 		if(k > border)
-			y++, k = 0;
+			coordY++, k = 0;
 		if(backplan < 16)
-			colorback[y][x+k] = backplan;
+			colorback[coordY][coordX+k] = backplan;
 		if(textcolor < 16)
-			colorfront[y][x+k] = textcolor;
-		screen[y][x+k] = text[i];
+			colorfront[coordY][coordX+k] = textcolor;
+		screen[coordY][coordX+k] = text[i];
 	}
 }
-void Shadow(int colorback[64][64], int colorfront[64][64], int j, int i, int a, int b)//Rendering shadows and lightings
+void Shadow(int j, int i, int a, int b) //Rendering shadows and lightings
 {
 	if(lightingmap[j][i] == -2)
 		colorback[a][b] = 0, colorfront[a][b] = 0;
@@ -151,7 +151,7 @@ void LightMapLoad()
 				op++;
 			}
 }
-void Details(char screen[64][64], int colorfront[64][64], int a, int b)
+void Details(char screen[64][64], int a, int b)
 {
 	for(int k = 0; k < 32; k++)
 	{
@@ -292,8 +292,8 @@ void Render(int map[256][256])
 					colorback[a][b] = 0;
 			}
 			AmmoRender(j,i, a,b);
-			Details(screen,colorfront, a,b);
-			Shadow(colorback,colorfront, j,i, a,b);
+			Details(screen, a,b);
+			Shadow(j,i, a,b);
 			PostEffects();
 		}
 	}
@@ -328,7 +328,7 @@ void DrawFrame()
 	Color(0, 15);
 	framemodulus = (framemodulus + 1) % 10;
 }
-void DrawWindow(char UI[64][64], int colorback[64][64], int colorfront[64][64])
+void DrawWindow(char UI[64][64])
 {
     CONSOLE_CURSOR_INFO cursorinfo;
     cursorinfo.bVisible = 0;

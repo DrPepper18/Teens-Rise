@@ -481,7 +481,7 @@ double energy = stamina;
 //Weapon Info
 int ColorWeapon;
 int DistanceWeapon = 0;
-int DamageWeapon = 0;
+double DamageWeapon = 0;
 bool leftside = true;
 int SkinWeapon;
 int HandX, HandY;
@@ -495,7 +495,7 @@ int weapon[7] = {0,	//0 is for Melee
 	iFireCracker,	//Thrown
 	iPaintSpray,	//Extra
 }, weaponslot = 0;
-int inventory[11] = {0,//Cell "0" is only for key items
+int inventory[11] = {0, //Cell "0" is only for key items
 	iNone, 
 	iBurger,iSoda,iSmokeBomb,
 	iNone,iNone,iNone,
@@ -594,10 +594,10 @@ char *Localize(char *text, int row, char *filename)
 	file.close();
 	return text;
 }
-char numbertotext(int j){
-	int number = j/1000;
-	return number;
-}
+// char numbertotext(int j){
+// 	int number = j/1000;
+// 	return number;
+// }
 char *KeyName(int vKey)
 {
 	if(vKey == 'A')				return "[A]";
@@ -753,30 +753,32 @@ void SaveData(int slot)
 	}
 	Sleep(2000);
 }
-void QTE(bool success, int button[2], int type, int time)
-{
-	int simult = 0, round = 1;
-	int level = 5;
+// void QTE(bool success, int button[2], int type, int time)
+// {
+// 	int simult = 0, round = 1;
+// 	int level = 5;
 
-	cout << button[0];
-	if(button[1] != 0)
-		cout << " + ";
-	cout << button[1];
+// 	cout << button[0];
+// 	if(button[1] != 0)
+// 		cout << " + ";
+// 	cout << button[1];
 
-	if(GetAsyncKeyState(button[0]))
-		level++;
-	if(GetAsyncKeyState(button[1]))
-		level++;
-}
+// 	if(GetAsyncKeyState(button[0]))
+// 		level++;
+// 	if(GetAsyncKeyState(button[1]))
+// 		level++;
+// }
 
 char *WeatherAt(int hour)
 {
 	if(weatherforecast[hour] == clear)
 		return "Clear";
-	if(weatherforecast[hour] == rain)
+	else if(weatherforecast[hour] == rain)
 		return "Rain";
-	if(weatherforecast[hour] == snow)
+	else if(weatherforecast[hour] == snow)
 		return "Snow";
+	else
+		return "Cloudy";
 }
 void Use(int item_id)
 {
@@ -818,9 +820,9 @@ void LockingOn()
 	}
 	LockOn = lockednpc;
 }
-void LoadObject(int i, int item, int coordY, int coordX)
+void LoadObject(int i, int item_id, int coordY, int coordX)
 {
-	actionobject[i][0] = item,
+	actionobject[i][0] = item_id,
 	actionobject[i][1] = coordY,
 	actionobject[i][2] = coordX;
 }

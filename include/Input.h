@@ -119,10 +119,9 @@ void XboxControllerInput()
 {
 	XINPUT_STATE state;
 	ZeroMemory(&state, sizeof(XINPUT_STATE));
-	bool IsPressed = state.Gamepad.wButtons;
-	float LT = state.Gamepad.bLeftTrigger;
-	float RT = state.Gamepad.bRightTrigger;
-	int X = 0, Y = 1;
+	WORD IsPressed = state.Gamepad.wButtons;
+	// float LT = state.Gamepad.bLeftTrigger;
+	// float RT = state.Gamepad.bRightTrigger;
 	SHORT LS[2] = {state.Gamepad.sThumbLX, state.Gamepad.sThumbLY};
 	SHORT RS[2] = {state.Gamepad.sThumbRX, state.Gamepad.sThumbRY};
 

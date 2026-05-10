@@ -113,11 +113,10 @@ void Intro()
 	system("cls");
 	y = 16, x = 15, location = safehouse1;
 	hr = 9, mn = 0;
-	char captions[128];
 	ifstream file;
-	if(language == "english")
+	if(strcmp(language, "english") == 0)
 		file.open("C:\\Program Files\\Teen's rise\\game\\translate\\english\\story\\intro.txt");
-	else if(language == "russian")
+	else if(strcmp(language, "russian") == 0)
 		file.open("C:\\Program Files\\Teen's rise\\game\\translate\\russian\\story\\intro.txt");
 
 	for(int i = 0; i < 6; i++){
@@ -129,7 +128,6 @@ void Intro()
 }
 void Ending()
 {
-	char captions[128];
 	int i;
 	ifstream file("C:\\Program Files\\Teen's rise\\game\\translate\\english\\story\\m_1.txt");
 	for(i = 0; !file.eof(); i++){
@@ -153,7 +151,7 @@ void TotalResults()
 		likes += (336 - totalplaytime/3600);
 	if(knockedout+arrested+failed < 100)
 		likes += 100 - (knockedout+arrested+failed);
-	likes += money/100;
+	likes += int(money/100);
 	Color(0,12);
 	cout << heart << " " << likes << endl;
 	_getch();
@@ -611,7 +609,7 @@ void m_sunrise()
 		SaveData(0);
 	}
 }
-void Mission(int mission)
+void Mission()
 {
 	if(mission == newworld)				{m_1newworld();			}
 	else if(mission == 2)				{m_2finding();			}

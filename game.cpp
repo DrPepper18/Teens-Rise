@@ -90,23 +90,22 @@ void ControlsSettings()
 			for (i = 0; menupattern[j][i] != 0; i++)
 				UI[j][i] = menupattern[j][i];
 		for(i = 0; i < 12; i++)
-			TextOutput(UI, colorback, colorfront, "|", 2+i, 7, 16, 0, 10);
-		TextOutput(UI, colorback, colorfront, "_________________", 9, 19, 16, 0, 16);
-		TextOutput(UI, colorback, colorfront, "[Q] <-", 1, 2, 16, 0, 10);
-		TextOutput(UI, colorback, colorfront, "-> [E]", 1, 30, 16, 0, 10);
+			TextOutput(UI, "|", 2+i, 7, 16, 0, 10);
+		TextOutput(UI, "_________________", 9, 19, 16, 0, 16);
+		TextOutput(UI, "[Q] <-", 1, 2, 16, 0, 10);
+		TextOutput(UI, "-> [E]", 1, 30, 16, 0, 10);
 
-		int colorback[64][64], colorfront[64][64];
-		TextOutput(UI, colorback, colorfront, SprintLabel,	2,1, 16,0, 10);
-		TextOutput(UI, colorback, colorfront, CrawlLabel,	3,1, 16,0, 10);
-		TextOutput(UI, colorback, colorfront, ActionLabel,	4,1, 16,0, 10);
-		TextOutput(UI, colorback, colorfront, PunchLabel,	5,1, 16,0, 10);
-		TextOutput(UI, colorback, colorfront, LockOnLabel,	6,1, 16,0, 10);
-		TextOutput(UI, colorback, colorfront, WeaponLabel,	7,1, 16,0, 10);
-		TextOutput(UI, colorback, colorfront, Slot1Label,	8,1, 16,0, 10);
-		TextOutput(UI, colorback, colorfront, Slot2Label,	9,1, 16,0, 10);
-		TextOutput(UI, colorback, colorfront, Slot3Label,	10,1,16,0, 10);
-		TextOutput(UI, colorback, colorfront, Slot4Label,	11,1,16,0, 10);
-		TextOutput(UI, colorback, colorfront, UseItemLabel,	12,1,16,0, 10);
+		TextOutput(UI, SprintLabel,	2,1, 16,0, 10);
+		TextOutput(UI, CrawlLabel,	3,1, 16,0, 10);
+		TextOutput(UI, ActionLabel,	4,1, 16,0, 10);
+		TextOutput(UI, PunchLabel,	5,1, 16,0, 10);
+		TextOutput(UI, LockOnLabel,	6,1, 16,0, 10);
+		TextOutput(UI, WeaponLabel,	7,1, 16,0, 10);
+		TextOutput(UI, Slot1Label,	8,1, 16,0, 10);
+		TextOutput(UI, Slot2Label,	9,1, 16,0, 10);
+		TextOutput(UI, Slot3Label,	10,1,16,0, 10);
+		TextOutput(UI, Slot4Label,	11,1,16,0, 10);
+		TextOutput(UI, UseItemLabel,	12,1,16,0, 10);
 
 		for(j = 0; j < 64; j++)
 			for(i = 0; i < 64; i++)
@@ -126,52 +125,52 @@ void ControlsSettings()
 			}
 		}
 		if(conflict && !click)
-			TextOutput(UI, colorback, colorfront, ConflictLabel, 10,18, 16,0, 16);
+			TextOutput(UI, ConflictLabel, 10,18, 16,0, 16);
 		if(click)
-			TextOutput(UI, colorback, colorfront, BindLabel, 10,18, 16,0, 16);
+			TextOutput(UI, BindLabel, 10,18, 16,0, 16);
 		else
-			TextOutput(UI, colorback, colorfront, backhint, 12,27, 16,0, 16);
+			TextOutput(UI, backhint, 12,27, 16,0, 16);
 
 		if(InputDevice == keyboard){
-			TextOutput(UI, colorback, colorfront, KeyName(Keyboard[Sprint]),	2,9, 7,0, 10);
-			TextOutput(UI, colorback, colorfront, KeyName(Keyboard[Crawl]),		3,9, 7,0, 10);
-			TextOutput(UI, colorback, colorfront, KeyName(Keyboard[Action]),	4,9, 7,0, 10);
-			TextOutput(UI, colorback, colorfront, KeyName(Keyboard[Punch]),		5,9, 7,0, 10);
-			TextOutput(UI, colorback, colorfront, KeyName(Keyboard[Aim]),		6,9, 7,0, 10);
-			TextOutput(UI, colorback, colorfront, KeyName(Keyboard[Weapon]),	7,9, 7,0, 10);
-			TextOutput(UI, colorback, colorfront, KeyName(Keyboard[Slot1]),		8,9, 7,0, 10);
-			TextOutput(UI, colorback, colorfront, KeyName(Keyboard[Slot2]),		9,9, 7,0, 10);
-			TextOutput(UI, colorback, colorfront, KeyName(Keyboard[Slot3]),		10,9, 7,0, 10);
-			TextOutput(UI, colorback, colorfront, KeyName(Keyboard[Slot4]),		11,9, 7,0, 10);
-			TextOutput(UI, colorback, colorfront, KeyName(Keyboard[UseItem]),	12,9, 7,0, 10);
+			TextOutput(UI, KeyName(Keyboard[Sprint]),	2,9, 7,0, 10);
+			TextOutput(UI, KeyName(Keyboard[Crawl]),		3,9, 7,0, 10);
+			TextOutput(UI, KeyName(Keyboard[Action]),	4,9, 7,0, 10);
+			TextOutput(UI, KeyName(Keyboard[Punch]),		5,9, 7,0, 10);
+			TextOutput(UI, KeyName(Keyboard[Aim]),		6,9, 7,0, 10);
+			TextOutput(UI, KeyName(Keyboard[Weapon]),	7,9, 7,0, 10);
+			TextOutput(UI, KeyName(Keyboard[Slot1]),		8,9, 7,0, 10);
+			TextOutput(UI, KeyName(Keyboard[Slot2]),		9,9, 7,0, 10);
+			TextOutput(UI, KeyName(Keyboard[Slot3]),		10,9, 7,0, 10);
+			TextOutput(UI, KeyName(Keyboard[Slot4]),		11,9, 7,0, 10);
+			TextOutput(UI, KeyName(Keyboard[UseItem]),	12,9, 7,0, 10);
 		}
 		else if(InputDevice == Xbox_gamepad){
-			TextOutput(UI, colorback, colorfront, "(A)",	2,9, 0,10, 10);
-			TextOutput(UI, colorback, colorfront, "(B)",	3,9, 0,12, 10);
-			TextOutput(UI, colorback, colorfront, "(Y)",	4,9, 0,14, 10);
-			TextOutput(UI, colorback, colorfront, "(X)",	5,9, 0,9, 10);
-			TextOutput(UI, colorback, colorfront, "|LT\\",	6,9, 0,15, 10);
-			TextOutput(UI, colorback, colorfront, "/RT|",	7,9, 0,15, 10);
-			TextOutput(UI, colorback, colorfront, "[^]",	8,9, 0,15, 10);
-			TextOutput(UI, colorback, colorfront, "[>]",	9,9, 0,15, 10);
-			TextOutput(UI, colorback, colorfront, "[<]",	10,9,0,15, 10);
-			TextOutput(UI, colorback, colorfront, "[v]",	11,9,0,15, 10);
-			TextOutput(UI, colorback, colorfront, "[LB]",	12,9,0,15, 16);
+			TextOutput(UI, "(A)",	2,9, 0,10, 10);
+			TextOutput(UI, "(B)",	3,9, 0,12, 10);
+			TextOutput(UI, "(Y)",	4,9, 0,14, 10);
+			TextOutput(UI, "(X)",	5,9, 0,9, 10);
+			TextOutput(UI, "|LT\\",	6,9, 0,15, 10);
+			TextOutput(UI, "/RT|",	7,9, 0,15, 10);
+			TextOutput(UI, "[^]",	8,9, 0,15, 10);
+			TextOutput(UI, "[>]",	9,9, 0,15, 10);
+			TextOutput(UI, "[<]",	10,9,0,15, 10);
+			TextOutput(UI, "[v]",	11,9,0,15, 10);
+			TextOutput(UI, "[LB]",	12,9,0,15, 16);
 		}
 		else if(InputDevice == DualShock){
 			char square[3] = {'(','n',')'};
 			char triangle[3] = {'(', 127, ')'};
-			TextOutput(UI, colorback, colorfront, "(X)",	2,9, 0,9, 10);
-			TextOutput(UI, colorback, colorfront, "(O)",	3,9, 0,12, 10);
-			TextOutput(UI, colorback, colorfront, triangle,	4,9, 0,10, 10);
-			TextOutput(UI, colorback, colorfront, square,	5,9, 0,13, 10);
-			TextOutput(UI, colorback, colorfront, "[L1]",	6,9, 0,15, 10);
-			TextOutput(UI, colorback, colorfront, "[R1]",	7,9, 0,15, 10);
-			TextOutput(UI, colorback, colorfront, "[^]",	8,9, 0,15, 10);
-			TextOutput(UI, colorback, colorfront, "[>]",	9,9, 0,15, 10);
-			TextOutput(UI, colorback, colorfront, "[<]",	10,9, 0,15, 10);
-			TextOutput(UI, colorback, colorfront, "[v]",	11,9, 0,15, 10);
-			TextOutput(UI, colorback, colorfront, "[L2]",	12,9,0,15, 16);
+			TextOutput(UI, "(X)",	2,9, 0,9, 10);
+			TextOutput(UI, "(O)",	3,9, 0,12, 10);
+			TextOutput(UI, triangle,	4,9, 0,10, 10);
+			TextOutput(UI, square,	5,9, 0,13, 10);
+			TextOutput(UI, "[L1]",	6,9, 0,15, 10);
+			TextOutput(UI, "[R1]",	7,9, 0,15, 10);
+			TextOutput(UI, "[^]",	8,9, 0,15, 10);
+			TextOutput(UI, "[>]",	9,9, 0,15, 10);
+			TextOutput(UI, "[<]",	10,9, 0,15, 10);
+			TextOutput(UI, "[v]",	11,9, 0,15, 10);
+			TextOutput(UI, "[L2]",	12,9,0,15, 16);
 		}
 
 		GetCursorPos(&p);
@@ -179,7 +178,7 @@ void ControlsSettings()
 		UI[MouseY][MouseX] = '+';
 		colorfront[MouseY][MouseX] = 12;
 
-		DrawWindow(UI, colorback, colorfront);
+		DrawWindow(UI);
 
 		if(!click)
 		{
@@ -229,7 +228,7 @@ void ControlsSettings()
 }
 void Settings()
 {
-	char SettingsLabel[128];
+	//char SettingsLabel[128];
 	char VideoButton[128];
 	char AudioButton[128];
 	char GameButton[128];
@@ -278,50 +277,50 @@ void Settings()
 		SetConsoleCursorPosition(hConsole, cursor);
 
 		char UI[64][64];
-		for (int j = 0; j < 14; j++)
+		for (j = 0; j < 14; j++)
 			for (int i = 0; menupattern[j][i] != 0; i++)
 				UI[j][i] = menupattern[j][i];
 
-		TextOutput(UI, colorback, colorfront,
+		TextOutput(UI,
 			"SETTINGS",
 			1, 2, 16, 0, 15);
 		for(int i = 2; i < 6; i++)
-			TextOutput(UI, colorback, colorfront,
+			TextOutput(UI,
 				"..............",
 				i, 2, 16, 0, 15);
 		if(settingof == none)
 		{
-			TextOutput(UI, colorback, colorfront, 
+			TextOutput(UI, 
 					VideoButton, 
 					2,2, 16,0, 15);
-			TextOutput(UI, colorback, colorfront, 
+			TextOutput(UI, 
 					AudioButton, 
 					3,2, 16,0, 15);
-			TextOutput(UI, colorback, colorfront, 
+			TextOutput(UI, 
 					GameButton, 
 					4,2, 16,0, 15);
-			TextOutput(UI, colorback, colorfront, 
+			TextOutput(UI, 
 					ControlsButton, 
 					5,2, 16,0, 15);
 			switch(pointer)
 			{
 			case video:
-				TextOutput(UI, colorback, colorfront, 
+				TextOutput(UI, 
 					VideoInfoLabel, 
 					2,19, 16,0, 16);
 				break;
 			case audio:
-				TextOutput(UI, colorback, colorfront, 
+				TextOutput(UI, 
 					AudioInfoLabel, 
 					2,19, 16,0, 16);
 				break;
 			case game:
-				TextOutput(UI, colorback, colorfront, 
+				TextOutput(UI, 
 					GameInfoLabel, 
 					2,19, 16,0, 16);
 				break;
 			case controls:
-				TextOutput(UI, colorback, colorfront, 
+				TextOutput(UI, 
 					ControlsInfoLabel, 
 					2,19, 16,0, 16);
 				break;
@@ -329,37 +328,37 @@ void Settings()
 		}
 		else if(settingof == video)
 		{
-			TextOutput(UI, colorback, colorfront, 
+			TextOutput(UI, 
 					FrameDelayButton, 
 					2,2, 16,0, 15);
-			TextOutput(UI, colorback, colorfront, 
+			TextOutput(UI, 
 					"10 ms", 
 					2,20, 16,0, 15);
-			TextOutput(UI, colorback, colorfront, 
+			TextOutput(UI, 
 					FontButton, 
 					3,2, 16,0, 15);
-			TextOutput(UI, colorback, colorfront, 
+			TextOutput(UI, 
 					"Pixel", 
 					3,20, 16,0, 15);
-			TextOutput(UI, colorback, colorfront, 
+			TextOutput(UI, 
 					FontSizeButton, 
 					4,2, 16,0, 15);
-			TextOutput(UI, colorback, colorfront, 
+			TextOutput(UI, 
 					"12x16", 
 					4,20, 16,0, 15);
-			TextOutput(UI, colorback, colorfront, 
+			TextOutput(UI, 
 					LanguageButton, 
 					5,2, 16,0, 15);
-			TextOutput(UI, colorback, colorfront, 
+			TextOutput(UI, 
 					"Russian", 
 					5,20, 16,0, 15);
 		}
 		else if(settingof == audio)
 		{
-			TextOutput(UI, colorback, colorfront, 
+			TextOutput(UI, 
 					"Sound", 
 					2,2, 16,0, 15);
-			TextOutput(UI, colorback, colorfront, 
+			TextOutput(UI, 
 					"On", 
 					2,20, 16,0, 15);
 		}
@@ -369,33 +368,33 @@ void Settings()
 		}
 		else if(settingof == controls)
 		{
-			TextOutput(UI, colorback, colorfront, 
+			TextOutput(UI, 
 					"Movement:", 
 					2,2, 16,0, 15);
-			TextOutput(UI, colorback, colorfront, 
+			TextOutput(UI, 
 					"Input device:", 
 					3,2, 16,0, 15);
-			TextOutput(UI, colorback, colorfront, 
+			TextOutput(UI, 
 					"[Controls]", 
 					4,2, 16,0, 15);
-			TextOutput(UI, colorback, colorfront, 
+			TextOutput(UI, 
 					"[DEFAULT]", 
 					5,2, 16,0, 15);
-			TextOutput(UI, colorback, colorfront, 
+			TextOutput(UI, 
 					"[W][S][A][D]", 
 					2,20, 16,0, 15);
 			if(InputDevice == keyboard){
-				TextOutput(UI, colorback, colorfront, 
+				TextOutput(UI, 
 					"Keyboard+mouse", 
 					3,20, 16,0, 15);
 			}
 			else if(InputDevice == Xbox_gamepad){
-				TextOutput(UI, colorback, colorfront, 
+				TextOutput(UI, 
 					"XINPUT gamepad", 
 					3,20, 16,0, 15);
 			}
 			else if(InputDevice == DualShock){
-				TextOutput(UI, colorback, colorfront, 
+				TextOutput(UI, 
 					"Dualshock", 
 					3,20, 16,0, 15);
 			}
@@ -414,7 +413,7 @@ void Settings()
 		UI[MouseY][MouseX] = '+';
 		colorfront[MouseY][MouseX] = 12;
 
-		DrawWindow(UI, colorback, colorfront);
+		DrawWindow(UI);
 		cout << "Frame delay - " << framedelay << "ms";
 
 		if (MouseX < 20 && MouseY >= 2 && MouseY <= 5)
@@ -473,24 +472,24 @@ void cmd(char *command)
 		cout << "\n>>";
 		cin >> command;
 	}
-	if(command == "knockout"){
+	if(strcmp(command, "knockout") == 0){
 		HP = 0;
 	}
-	else if(command == "alexset"){
+	else if(strcmp(command, "alexset") == 0){
 		weapon[extra] = iPepperSpray;
 	}
-	else if(command == "geekset"){
+	else if(strcmp(command, "geekset") == 0){
 		weapon[ranged2] = iBottleGun;
 		weapon[thrown] = iDirtyBottle;
 	}
-	else if(command == "doomerset"){
+	else if(strcmp(command, "doomerset") == 0){
 		weapon[close] = iBat;
 		//weapon[close] = iSmokeBomb.number;
 	}
-	else if(command == "zoomerset"){
+	else if(strcmp(command, "zoomerset") == 0){
 		weapon[ranged2] = iWaterGun;
 	}
-	else if(command == "offnicset"){
+	else if(strcmp(command, "offnicset") == 0){
 		weapon[close] = iBottle;
 		weapon[thrown] = iFireCracker;
 	}
@@ -565,17 +564,16 @@ void Shop(int catalog[32])
 		" [ ][ ][ ]  [ ] ---------- < 0 > -- p  ",
 		"            [ ] ---------- < 0 > -- p  ",
 		"            [ ] ---------- < 0 > -- p  ", };
-		int colorback_menu[64][64], colorfront_menu[64][64];
 		for (int j = 0; j < 64; j++)
 			for (int i = 0; i < 64; i++) {
-				colorback_menu[j][i] = colorback[j][i];
+				colorback[j][i] = colorback[j][i];
 				if (UI[j][i] == ' ' || UI[j][i] == 0)
 					UI[j][i] = screen[j][i],
-					colorfront_menu[j][i] = colorfront[j][i];
+					colorfront[j][i] = colorfront[j][i];
 				else
-					colorfront_menu[j][i] = 15;
+					colorfront[j][i] = 15;
 			}
-		DrawWindow(UI, colorback_menu, colorfront_menu);
+		DrawWindow(UI);
 		//Input
 		if(GetAsyncKeyState(Esc)){
 			system("cls");
@@ -629,51 +627,48 @@ void ItemBoxScreen()
 		SetConsoleCursorPosition(hConsole, cursor);
 
 		char UI[64][64];
-		int colorback_menu[64][64], colorfront_menu[64][64];
 		for(int j = 0; j < 64; j++)
 			for(int i = 0; i < 64; i++)
-				UI[j][i] = screen[j][i], 
-				colorback_menu[j][i] = colorback[j][i],
-				colorfront_menu[j][i] = colorfront[j][i];
+				UI[j][i] = screen[j][i];
 
-		TextOutput(UI, colorback_menu, colorfront_menu, "INVENTORY", 4,sizeX-11, 0,15, sizeX*2);
-		TextOutput(UI, colorback_menu, colorfront_menu, "ITEM BOX", 4,sizeX+2, 0,15, sizeX*2);
+		TextOutput(UI, "INVENTORY", 4,sizeX-11, 0,15, sizeX*2);
+		TextOutput(UI, "ITEM BOX", 4,sizeX+2, 0,15, sizeX*2);
 
 		for(int i = 0; i < 3; i++){
-			TextOutput(UI, colorback_menu, colorfront_menu, "[ ][ ][ ]", 6+i,sizeX-11, 0,15, sizeX*2);
-			TextOutput(UI, colorback_menu, colorfront_menu, "[ ][ ][ ]", 6+i,sizeX+2, 0,15, sizeX*2);
+			TextOutput(UI, "[ ][ ][ ]", 6+i,sizeX-11, 0,15, sizeX*2);
+			TextOutput(UI, "[ ][ ][ ]", 6+i,sizeX+2, 0,15, sizeX*2);
 		}
 		for(int i = 0; i < 10; i++)
 		{
 			if(inventory[i] != iNone)
 				UI[6+i/3][sizeX-10+i%3*3] = objectmodel[113+inventory[i]][1],
-				colorfront_menu[6+i/3][sizeX-10+i%3*3] = objectmodel[113+inventory[i]][3];
+				colorfront[6+i/3][sizeX-10+i%3*3] = objectmodel[113+inventory[i]][3];
 		}
 		for(int i = 0; i < 10; i++)
 		{
 			if(itembox[i] != iNone)
 				UI[6+i/3][sizeX+3+i%3*3] = objectmodel[113+itembox[i]][1],
-				colorfront_menu[6+i/3][sizeX+3+i%3*3] = objectmodel[113+itembox[i]][3];
+				colorfront[6+i/3][sizeX+3+i%3*3] = objectmodel[113+itembox[i]][3];
 		}
 		if(arr == arr_inventory)
-			colorfront_menu[6+pointerY][sizeX-10+pointerX*3-1] = 14, colorfront_menu[6+pointerY][sizeX-10+pointerX*3+1] = 14;
+			colorfront[6+pointerY][sizeX-10+pointerX*3-1] = 14, colorfront[6+pointerY][sizeX-10+pointerX*3+1] = 14;
 		else
-			colorfront_menu[6+pointerY][sizeX+3+pointerX*3-1] = 14, colorfront_menu[6+pointerY][sizeX+3+pointerX*3+1] = 14;
+			colorfront[6+pointerY][sizeX+3+pointerX*3-1] = 14, colorfront[6+pointerY][sizeX+3+pointerX*3+1] = 14;
 		if(chosenitem[0] != 0){
 			if(chosenitem[1] == arr_inventory)
-				colorfront_menu[6+(chosenitem[2]/3)][sizeX-10+(chosenitem[2]%3)*3-1] = 10, colorfront_menu[6+(chosenitem[2]/3)][sizeX-10+(chosenitem[2]%3)*3+1] = 10;
+				colorfront[6+(chosenitem[2]/3)][sizeX-10+(chosenitem[2]%3)*3-1] = 10, colorfront[6+(chosenitem[2]/3)][sizeX-10+(chosenitem[2]%3)*3+1] = 10;
 			else if(chosenitem[1] == arr_itembox)
-				colorfront_menu[6+(chosenitem[2]/3)][sizeX+3+(chosenitem[2]%3)*3-1] = 10, colorfront_menu[6+(chosenitem[2]/3)][sizeX+3+(chosenitem[2]%3)*3+1] = 10;
+				colorfront[6+(chosenitem[2]/3)][sizeX+3+(chosenitem[2]%3)*3-1] = 10, colorfront[6+(chosenitem[2]/3)][sizeX+3+(chosenitem[2]%3)*3+1] = 10;
 		}
 		if(arr == arr_itembox){
-			TextOutput(UI, colorback_menu, colorfront_menu, item[itembox[pointerY*3+pointerX]].name, 10,4, 0,15, sizeX*2-4);
-			TextOutput(UI, colorback_menu, colorfront_menu, item[itembox[pointerY*3+pointerX]].description, 12,4, 0,15, sizeX*2-4);
+			TextOutput(UI, item[itembox[pointerY*3+pointerX]].name, 10,4, 0,15, sizeX*2-4);
+			TextOutput(UI, item[itembox[pointerY*3+pointerX]].description, 12,4, 0,15, sizeX*2-4);
 		}
 		else{
-			TextOutput(UI, colorback_menu, colorfront_menu, item[inventory[pointerY*3+pointerX]].name, 10,4, 0,15, sizeX*2-4);
-			TextOutput(UI, colorback_menu, colorfront_menu, item[inventory[pointerY*3+pointerX]].description, 12,4, 0,15, sizeX*2-4);
+			TextOutput(UI, item[inventory[pointerY*3+pointerX]].name, 10,4, 0,15, sizeX*2-4);
+			TextOutput(UI, item[inventory[pointerY*3+pointerX]].description, 12,4, 0,15, sizeX*2-4);
 		}
-		DrawWindow(UI, colorback_menu, colorfront_menu);
+		DrawWindow(UI);
 		
 		if(GetAsyncKeyState(Esc))
 			return;
@@ -740,15 +735,15 @@ void InventoryScreen()
 		for (int j = 0; j < 14; j++)
 			for (int i = 0; menupattern[j][i] != 0; i++)
 				UI[j][i] = menupattern[j][i];
-		TextOutput(UI, colorback, colorfront, "[ ][ ][ ]", 2, 2, 16, 0, 17);
+		TextOutput(UI, "[ ][ ][ ]", 2, 2, 16, 0, 17);
 		for(int j = 0; j < 3; j++)
 			for(int i = 0; i < 3; i++)
 				UI[4+j][3 + i * 3 - 1] = '[', UI[4+j][3 + i * 3 + 1] = ']',
 	
-		TextOutput(UI, colorback, colorfront, item[inventory[pointerY*3+pointerX]].name, 7,2, 16,0, 17);
+		TextOutput(UI, item[inventory[pointerY*3+pointerX]].name, 7,2, 16,0, 17);
 		UI[4+pointerY][3+pointerX*3-1] = '(', UI[4+pointerY][3+pointerX*3+1] = ')';
 		int pointer = pointerY*3+pointerX;
-		TextOutput(UI, colorback, colorfront, item[inventory[pointer]].description, 2,20, 16,0, 14);
+		TextOutput(UI, item[inventory[pointer]].description, 2,20, 16,0, 14);
 		
 		for(int j = 0; j < 64; j++)
 			for(int i = 0; i < 64; i++)
@@ -781,22 +776,22 @@ void InventoryScreen()
 		for(int i = 0; i < energy; i++)
 			Stamina[i] = '_';
 
-		TextOutput(UI, colorback, colorfront, "INVENTORY:", 1,2, 16,0, 30);
-		TextOutput(UI, colorback, colorfront, "INFO:", 1,20, 16,0, 30);
-		//TextOutput(UI, colorback, colorfront, HUD, 9,2, 0,15, 30);
-		TextOutput(UI, colorback, colorfront, Health, 9,3, 2,15, HP);
-		TextOutput(UI, colorback, colorfront, Stamina, 9,3, 16,14, energy);
-		TextOutput(UI, colorback, colorfront, "[Esc]", 11,2, 7,0, 30);
-		TextOutput(UI, colorback, colorfront, "back", 11,8, 16,0, 30);
-		//TextOutput(UI, colorback, colorfront, "[Enter] - use", 12,1, 16,0, 30);
-		//TextOutput(UI, colorback, colorfront, "[C] - discard", 11,20, 16,0, 30);
+		TextOutput(UI, "INVENTORY:", 1,2, 16,0, 30);
+		TextOutput(UI, "INFO:", 1,20, 16,0, 30);
+		//TextOutput(UI, HUD, 9,2, 0,15, 30);
+		TextOutput(UI, Health, 9,3, 2,15, HP);
+		TextOutput(UI, Stamina, 9,3, 16,14, energy);
+		TextOutput(UI, "[Esc]", 11,2, 7,0, 30);
+		TextOutput(UI, "back", 11,8, 16,0, 30);
+		//TextOutput(UI, "[Enter] - use", 12,1, 16,0, 30);
+		//TextOutput(UI, "[C] - discard", 11,20, 16,0, 30);
 
 		GetCursorPos(&p);
 		MouseY = p.y / SensivityY, MouseX = p.x / SensivityX;
 		UI[MouseY][MouseX] = '+';
 		colorfront[MouseY][MouseX] = 12;
 
-		DrawWindow(UI, colorback, colorfront);
+		DrawWindow(UI);
 		cout << HUD << Health << Stamina;
 		if ((MouseY >= 4 && MouseY <= 6) && (MouseX >= 2 && MouseX <= 11)) {
 			pointerY = MouseY - 4, pointerX = (MouseX - 2) / 3;
@@ -866,31 +861,31 @@ void DataScreen(int option)//0 is for saving; 1 is for loading
 			for (int i = 0; menupattern[j][i] != 0; i++)
 				UI[j][i] = menupattern[j][i];
 		for(int i = 0; i < 5; i++)
-			TextOutput(UI, colorback, colorfront, ".--------------", 2+i, 2, 16, 0, 30);
+			TextOutput(UI, ".--------------", 2+i, 2, 16, 0, 30);
 
 		for(int j = 0; j < 64; j++)
 			for(int i = 0; i < 64; i++)
 				colorback[j][i] = 15, colorfront[j][i] = 0;
-		TextOutput(UI, colorback, colorfront, SaveLoadTitle, 1, 2, 16, 0, 30);
+		TextOutput(UI, SaveLoadTitle, 1, 2, 16, 0, 30);
 
-		TextOutput(UI, colorback, colorfront, DateLabel, 8, 20, 16, 0, 30);
-		TextOutput(UI, colorback, colorfront, "--.--.----", 8, 26, 16, 0, 30);
-		TextOutput(UI, colorback, colorfront, TotalLabel, 9, 20, 16, 0, 30);
+		TextOutput(UI, DateLabel, 8, 20, 16, 0, 30);
+		TextOutput(UI, "--.--.----", 8, 26, 16, 0, 30);
+		TextOutput(UI, TotalLabel, 9, 20, 16, 0, 30);
 		
-		TextOutput(UI, colorback, colorfront, "_________________", 10, 1, 16, 0, 30);
-		TextOutput(UI, colorback, colorfront, "_________________", 10, 19, 16, 0, 30);
+		TextOutput(UI, "_________________", 10, 1, 16, 0, 30);
+		TextOutput(UI, "_________________", 10, 19, 16, 0, 30);
 
-		TextOutput(UI, colorback, colorfront, backhint, 11,10, 16,0, 30);
-		TextOutput(UI, colorback, colorfront, KeyName(Esc), 11,2, 7,0, 30);
-		TextOutput(UI, colorback, colorfront, selecthint, 12,10, 16,0, 30);
-		TextOutput(UI, colorback, colorfront, KeyName(Enter), 12,2, 7,0, 30);
+		TextOutput(UI, backhint, 11,10, 16,0, 30);
+		TextOutput(UI, KeyName(Esc), 11,2, 7,0, 30);
+		TextOutput(UI, selecthint, 12,10, 16,0, 30);
+		TextOutput(UI, KeyName(Enter), 12,2, 7,0, 30);
 		
 		char buf[3];
 		for (int i = 0; i < 5; i++) {
-			itoa(i, buf, 10);
-			TextOutput(UI, colorback, colorfront, buf, 2 + i, 1, 16, 0, 30);
+			_itoa(i, buf, 10);
+			TextOutput(UI, buf, 2 + i, 1, 16, 0, 30);
 		}
-		//TextOutput(UI, colorback, colorfront, navigatehint,	12,28, 16,0, 30);
+		//TextOutput(UI, navigatehint,	12,28, 16,0, 30);
 
 		char buffer[64];
 		if(pointer == 0) file.open("C:\\Program Files\\Teen's rise\\game\\saves\\autosave.txt");
@@ -899,11 +894,11 @@ void DataScreen(int option)//0 is for saving; 1 is for loading
 		file.getline(buffer, 64);
 		file.getline(buffer, 10, ' ');
 		file.getline(buffer, 4, '.');
-		TextOutput(UI, colorback, colorfront, buffer, 8,26, 16,0, 30);
+		TextOutput(UI, buffer, 8,26, 16,0, 30);
 		file.getline(buffer, 4, '.');
-		TextOutput(UI, colorback, colorfront, buffer, 8,29, 16,0, 30);
+		TextOutput(UI, buffer, 8,29, 16,0, 30);
 		file.getline(buffer, 5);
-		TextOutput(UI, colorback, colorfront, buffer, 8,32, 16,0, 30);
+		TextOutput(UI, buffer, 8,32, 16,0, 30);
 		bool nodata = true;
 		for(int j = 0; j < 5; j++){
 			for(int i = 0; i < 7; i++){
@@ -916,7 +911,7 @@ void DataScreen(int option)//0 is for saving; 1 is for loading
 			}
 		}
 		if(nodata)
-			TextOutput(UI, colorback, colorfront, "No Data", 5,20, 16,15, 30);
+			TextOutput(UI, "No Data", 5,20, 16,15, 30);
 		file.close();
 		for(int i = 0; i < 3; i++)
 		{
@@ -924,14 +919,14 @@ void DataScreen(int option)//0 is for saving; 1 is for loading
 			if(i == 1) file.open("C:\\Program Files\\Teen's rise\\game\\saves\\savedata1.txt");
 			if(i == 2) file.open("C:\\Program Files\\Teen's rise\\game\\saves\\savedata2.txt");
 			file.getline(buffer, 64);
-			TextOutput(UI, colorback, colorfront, buffer, 2+i,3, 16,0, 30);
+			TextOutput(UI, buffer, 2+i,3, 16,0, 30);
 			file.close();
 		}
 
 		int autosavecolor = 0;
 		if(option == save)
 			autosavecolor = 7;
-		TextOutput(UI, colorback, colorfront, AutosaveLabel, 2,3, 16,autosavecolor, 30);
+		TextOutput(UI, AutosaveLabel, 2,3, 16,autosavecolor, 30);
 
 		int j = 2+pointer;
 		for(int i = 3; i < 17; i++)
@@ -942,7 +937,7 @@ void DataScreen(int option)//0 is for saving; 1 is for loading
 		UI[MouseY][MouseX] = '+';
 		colorfront[MouseY][MouseX] = 12;
 
-		DrawWindow(UI, colorback, colorfront);
+		DrawWindow(UI);
 
 		if (MouseX < 20 && MouseY >= 2 && MouseY <= 6)
 			pointer = MouseY - 2;
@@ -999,15 +994,15 @@ void pause()
 			for(int i = 0; i < 64; i++)
 				colorback[j][i] = 15, colorfront[j][i] = 0;
 
-		TextOutput(UI, colorback, colorfront, "PAUSE", 1, 2, 16, 0, 100);
+		TextOutput(UI, "PAUSE", 1, 2, 16, 0, 100);
 		for(int i = 0; i < 5; i++)
-			TextOutput(UI, colorback, colorfront, "...............", 2+i, 2, 16, 0, 100);
+			TextOutput(UI, "...............", 2+i, 2, 16, 0, 100);
 
-		TextOutput(UI, colorback, colorfront, InventoryButton, 2,2, 16,0, 100);
-		TextOutput(UI, colorback, colorfront, DiaryButton, 3,2, 16,0, 100);
-		TextOutput(UI, colorback, colorfront, LoadGameButton, 4,2, 16,0, 100);
-		TextOutput(UI, colorback, colorfront, SettingsButton, 5,2, 16,0, 100);
-		TextOutput(UI, colorback, colorfront, QuitGameButton, 6,2, 16,0, 100);
+		TextOutput(UI, InventoryButton, 2,2, 16,0, 100);
+		TextOutput(UI, DiaryButton, 3,2, 16,0, 100);
+		TextOutput(UI, LoadGameButton, 4,2, 16,0, 100);
+		TextOutput(UI, SettingsButton, 5,2, 16,0, 100);
+		TextOutput(UI, QuitGameButton, 6,2, 16,0, 100);
 
 		for(int i = 2; i < 17; i++)
 			colorback[1+pointer][i] = 0, colorfront[1+pointer][i] = 15;
@@ -1017,7 +1012,7 @@ void pause()
 		UI[MouseY][MouseX] = '+';
 		colorfront[MouseY][MouseX] = 12;
 
-		DrawWindow(UI, colorback, colorfront);
+		DrawWindow(UI);
 
 		if (MouseX < 20 && MouseY >= 2 && MouseY <= 6)
 			pointer = MouseY - 1;
@@ -1059,9 +1054,9 @@ void Phone()
 	char MapLabel[128];
 	char SubLabel1[128];
 	char SubLabel2[128];
-	char SubLabel3[128];
-	char SubLabel4[128];
-	char SubLabel5[128];
+	// char SubLabel3[128];
+	// char SubLabel4[128];
+	// char SubLabel5[128];
 	Localize(SearchLabel, 1, "\\phone.txt");
 	Localize(MessageLabel, 2, "\\phone.txt");
 	Localize(MusicLabel, 3, "\\phone.txt");
@@ -1132,7 +1127,6 @@ void Phone()
 		"#-----------------#",
 		"#  V  |  O  |  X  #",
 		" ################# ",};
-		int colorback[64][64], colorfront[64][64];
 
 		for(j = 0; j < 64; j++){
 			for(i = 0; i < 64; i++){
@@ -1148,26 +1142,26 @@ void Phone()
 		}
 
 		if(app == desktop){
-			TextOutput(UI, colorback, colorfront, SearchLabel, 2,2, 16,15, 100);
-			TextOutput(UI, colorback, colorfront, MessageLabel, 3,1, 16,14, 100);
-			TextOutput(UI, colorback, colorfront, MusicLabel, 4,1, 16,13, 100);
-			TextOutput(UI, colorback, colorfront, WeatherLabel, 5,1, 16,11, 100);
-			TextOutput(UI, colorback, colorfront, MapLabel, 6,1, 16,10, 100);
+			TextOutput(UI, SearchLabel, 2,2, 16,15, 100);
+			TextOutput(UI, MessageLabel, 3,1, 16,14, 100);
+			TextOutput(UI, MusicLabel, 4,1, 16,13, 100);
+			TextOutput(UI, WeatherLabel, 5,1, 16,11, 100);
+			TextOutput(UI, MapLabel, 6,1, 16,10, 100);
 		}
 		else if(app == message){
 			Localize(SubLabel1, 7, "\\phone.txt");
 			Localize(SubLabel2, 7, "\\phone.txt");
-			TextOutput(UI, colorback, colorfront, SubLabel1, 3,1, 16,15, 100);
-			TextOutput(UI, colorback, colorfront, "[--:--]", 4,1, 16,15, 100);
-			TextOutput(UI, colorback, colorfront, SubLabel2, 5,1, 16,15, 100);
+			TextOutput(UI, SubLabel1, 3,1, 16,15, 100);
+			TextOutput(UI, "[--:--]", 4,1, 16,15, 100);
+			TextOutput(UI, SubLabel2, 5,1, 16,15, 100);
 		}
 		else if(app == walkman){
 			Localize(SubLabel1, 10, "\\phone.txt");
 			Localize(SubLabel2, 11, "\\phone.txt");
-			TextOutput(UI, colorback, colorfront, SubLabel1, 3,1, 16,15, 100);
-			TextOutput(UI, colorback, colorfront, SubLabel2, 4,1, 16,7, 100);
-			TextOutput(UI, colorback, colorfront, " Prev|Pause|Next", 7,1, 16,15, 100);
-			TextOutput(UI, colorback, colorfront, "  [A][Space][D]", 8,1, 16,15, 100);
+			TextOutput(UI, SubLabel1, 3,1, 16,15, 100);
+			TextOutput(UI, SubLabel2, 4,1, 16,7, 100);
+			TextOutput(UI, " Prev|Pause|Next", 7,1, 16,15, 100);
+			TextOutput(UI, "  [A][Space][D]", 8,1, 16,15, 100);
 		}
 		else if(app == weather){
 			int bgcolor = 0, frcolor = 15;
@@ -1180,8 +1174,8 @@ void Phone()
 				else if(weatherforecast[hr+i] == snow)
 					bgcolor = 15, frcolor = 7;
 
-				TextOutput(UI, colorback, colorfront, WeatherAt(hr+i), 2+i,1, bgcolor,frcolor, 100);
-				TextOutput(UI, colorback, colorfront, "12:00", 2+i,10, bgcolor,frcolor, 100);
+				TextOutput(UI, WeatherAt(hr+i), 2+i,1, bgcolor,frcolor, 100);
+				TextOutput(UI, "12:00", 2+i,10, bgcolor,frcolor, 100);
 			}
 		}
 		else if(app == map){
@@ -1218,13 +1212,13 @@ void Phone()
 					if(QPressed == 1){
 						for(int k = 0; k < 8; k++)
 							if(BorderY+j == names[k][1] && BorderX+i == names[k][2])
-								TextOutput(UI, colorback, colorfront, LocationName[names[k][0]],
+								TextOutput(UI, LocationName[names[k][0]],
 								j+2, i+1, 0, 15, 6);
 					}
 				}
 			}
-			TextOutput(UI, colorback, colorfront, "[Space] - help", 11,1, 16,15, 16);
-			TextOutput(UI, colorback, colorfront, LocationName[location], 10,1, 16,15, 16);
+			TextOutput(UI, "[Space] - help", 11,1, 16,15, 16);
+			TextOutput(UI, LocationName[location], 10,1, 16,15, 16);
 		}
 		if(SpPressed == 1)
 		{
@@ -1232,12 +1226,12 @@ void Phone()
 			"H - safehouse  ",
 			"S - store      ",
 			"X - objective  ";*/
-			TextOutput(UI, colorback, colorfront, "CONTROLS:      ", 2,2, 0,15, 16);
-			TextOutput(UI, colorback, colorfront, "[E] - center   ", 3,2, 0,15, 16);
-			TextOutput(UI, colorback, colorfront, "[Q] - set names", 4,2, 0,15, 16);
-			TextOutput(UI, colorback, colorfront, "[Space] - hide ", 5,2, 0,15, 16);
-			TextOutput(UI, colorback, colorfront, "[Esc] - quit   ", 6,2, 0,15, 16);
-			TextOutput(UI, colorback, colorfront, "SIGNS:         ", 7,2, 0,15, 16);
+			TextOutput(UI, "CONTROLS:      ", 2,2, 0,15, 16);
+			TextOutput(UI, "[E] - center   ", 3,2, 0,15, 16);
+			TextOutput(UI, "[Q] - set names", 4,2, 0,15, 16);
+			TextOutput(UI, "[Space] - hide ", 5,2, 0,15, 16);
+			TextOutput(UI, "[Esc] - quit   ", 6,2, 0,15, 16);
+			TextOutput(UI, "SIGNS:         ", 7,2, 0,15, 16);
 		}
 
 		//Output
@@ -1246,7 +1240,7 @@ void Phone()
 			if(UI[j][i] != '#' && app == desktop)
 				colorback[j][i] = 15, colorfront[j][i] = 0;
 
-		DrawWindow(UI,colorback,colorfront);
+		DrawWindow(UI);
 
 		//Input
 		if(app == 0)
@@ -1309,9 +1303,9 @@ void Phone()
 			else if(GetAsyncKeyState(VK_SPACE))
 				SpPressed = !SpPressed;
 			else if(GetAsyncKeyState('Q'))
-				QPressed *= !QPressed;
+				QPressed = !QPressed;
 			else if(GetAsyncKeyState('E'))
-				EPressed *= !EPressed;
+				EPressed = !EPressed;
 		}
 		else
 		{
@@ -1417,7 +1411,7 @@ void LogicWorld()
 {
 	//Mission
 	if(mission > 0)
-		Mission(mission);
+		Mission();
 	else
 		MissionTrigger();
 	
@@ -1635,20 +1629,20 @@ void menu()
 			for(i = 0; i < 64; i++)
 				colorback[j][i] = 15, colorfront[j][i] = 0;
 		
-		TextOutput(UI, colorback, colorfront, "TEEN'S RISE", 5,2, 16,0, 14);
+		TextOutput(UI, "TEEN'S RISE", 5,2, 16,0, 14);
 		for(i = 0; i < 4; i++)
-			TextOutput(UI, colorback, colorfront, "..............", 2+i,20, 16,0, 14);
-		TextOutput(UI, colorback, colorfront, "_________________", 10,19, 16,0, 17);
+			TextOutput(UI, "..............", 2+i,20, 16,0, 14);
+		TextOutput(UI, "_________________", 10,19, 16,0, 17);
 
-		TextOutput(UI, colorback, colorfront, Title, 2,2, 16,0, 12);
-		TextOutput(UI, colorback, colorfront, LoadGameButton, 2,20, 16,0, 30);
-		TextOutput(UI, colorback, colorfront, NewGameButton, 3,20, 16,0, 30);
-		TextOutput(UI, colorback, colorfront, SettingsButton, 4,20, 16,0, 30);
-		TextOutput(UI, colorback, colorfront, QuitGameButton, 5,20, 16,0, 30);
-		TextOutput(UI, colorback, colorfront, backhint, 11,26, 16,0, 30);
-		TextOutput(UI, colorback, colorfront, selecthint, 12,28, 16,0, 30);
-		TextOutput(UI, colorback, colorfront, KeyName(Esc), 11,20, 7,0, 30);
-		TextOutput(UI, colorback, colorfront, KeyName(Enter), 12,20, 7,0, 30);
+		TextOutput(UI, Title, 2,2, 16,0, 12);
+		TextOutput(UI, LoadGameButton, 2,20, 16,0, 30);
+		TextOutput(UI, NewGameButton, 3,20, 16,0, 30);
+		TextOutput(UI, SettingsButton, 4,20, 16,0, 30);
+		TextOutput(UI, QuitGameButton, 5,20, 16,0, 30);
+		TextOutput(UI, backhint, 11,26, 16,0, 30);
+		TextOutput(UI, selecthint, 12,28, 16,0, 30);
+		TextOutput(UI, KeyName(Esc), 11,20, 7,0, 30);
+		TextOutput(UI, KeyName(Enter), 12,20, 7,0, 30);
 
 		j = 1+pointer;
 		for(i = 20; i < 35; i++)
@@ -1659,7 +1653,7 @@ void menu()
 		UI[MouseY][MouseX] = '+';
 		colorfront[MouseY][MouseX] = 12;
 
-		DrawWindow(UI, colorback, colorfront);
+		DrawWindow(UI);
 
 		if (MouseX >= 20 && MouseY >= 2 && MouseY <= 5)
 			pointer = MouseY - 1;
@@ -1767,8 +1761,7 @@ void GlobalLocalize()
 }
 void main()
 {
-	HANDLE hCon = CreateConsoleScreenBuffer(GENERIC_READ | GENERIC_WRITE, 0, NULL, 
-		CONSOLE_TEXTMODE_BUFFER, NULL);
+	// HANDLE hCon = CreateConsoleScreenBuffer(GENERIC_READ | GENERIC_WRITE, 0, NULL, CONSOLE_TEXTMODE_BUFFER, NULL);
 	SetConsoleTitle("Teen's Rise");//Teen's Rise title
 	setlocale(LC_ALL, "rus");
 	SetConsoleOutputCP(866);
