@@ -514,7 +514,7 @@ void AI()
 		}
 	}
 }
-void UpdateNPC(int map[256][256])
+void UpdateNPC()
 {
 	for(int i = 0; i < 32; i++)
 	{
@@ -524,37 +524,37 @@ void UpdateNPC(int map[256][256])
 		if(npc[i][npc_HP] > 0)
 		{
 			if(npc[i][npc_fraction] == fraction_geek)
-				map[npc[i][npc_y]][npc[i][npc_x]] = objectmodel[102][0];
+				loadedmap[npc[i][npc_y]][npc[i][npc_x]] = objectmodel[102][0];
 			else if(npc[i][npc_fraction] == fraction_doomer)
-				map[npc[i][npc_y]][npc[i][npc_x]] = objectmodel[103][0];
+				loadedmap[npc[i][npc_y]][npc[i][npc_x]] = objectmodel[103][0];
 			else if(npc[i][npc_fraction] == fraction_zoomer)
-				map[npc[i][npc_y]][npc[i][npc_x]] = objectmodel[104][0];
+				loadedmap[npc[i][npc_y]][npc[i][npc_x]] = objectmodel[104][0];
 			else if(npc[i][npc_fraction] == fraction_gopnic)
-				map[npc[i][npc_y]][npc[i][npc_x]] = objectmodel[105][0];
+				loadedmap[npc[i][npc_y]][npc[i][npc_x]] = objectmodel[105][0];
 			else if(npc[i][npc_fraction] == fraction_biker)
-				map[npc[i][npc_y]][npc[i][npc_x]] = objectmodel[106][0];
+				loadedmap[npc[i][npc_y]][npc[i][npc_x]] = objectmodel[106][0];
 			else if(npc[i][npc_fraction] == fraction_police)
-				map[npc[i][npc_y]][npc[i][npc_x]] = objectmodel[107][0];
+				loadedmap[npc[i][npc_y]][npc[i][npc_x]] = objectmodel[107][0];
 			else
-				map[npc[i][npc_y]][npc[i][npc_x]] = objectmodel[104][0];
+				loadedmap[npc[i][npc_y]][npc[i][npc_x]] = objectmodel[104][0];
 		}
 		else
 		{
 			if(npc[i][npc_fraction] == fraction_geek)
-				map[npc[i][npc_y]][npc[i][npc_x]] = objectmodel[109][0];
+				loadedmap[npc[i][npc_y]][npc[i][npc_x]] = objectmodel[109][0];
 			else if(npc[i][npc_fraction] == fraction_doomer)
-				map[npc[i][npc_y]][npc[i][npc_x]] = objectmodel[110][0];
+				loadedmap[npc[i][npc_y]][npc[i][npc_x]] = objectmodel[110][0];
 			else if(npc[i][npc_fraction] == fraction_zoomer)
-				map[npc[i][npc_y]][npc[i][npc_x]] = objectmodel[111][0];
+				loadedmap[npc[i][npc_y]][npc[i][npc_x]] = objectmodel[111][0];
 			else if(npc[i][npc_fraction] == fraction_gopnic)
-				map[npc[i][npc_y]][npc[i][npc_x]] = objectmodel[112][0];
+				loadedmap[npc[i][npc_y]][npc[i][npc_x]] = objectmodel[112][0];
 		}
-		//map[npc[i][npc_y]][npc[i][npc_x]+1] = objectmodel[npc[i][npc_weapon]][1];
+		//loadedmap[npc[i][npc_y]][npc[i][npc_x]+1] = objectmodel[npc[i][npc_weapon]][1];
 	}
 }
-void Update(int map[256][256])
+void Update()
 {
-	UpdatePlayer(map);
-	UpdateNPC(map);
+	UpdatePlayer();
+	UpdateNPC();
 	UpdateObjects();
 }

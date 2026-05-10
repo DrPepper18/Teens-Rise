@@ -1027,31 +1027,31 @@ void UpdateObjects()
 			loadedmap[actionobject[i][1]][actionobject[i][2]] = 113+actionobject[i][0];
 	}
 }
-void UpdatePlayer(int field[256][256])
+void UpdatePlayer()
 {
 	if(HP > 0)
 	{
 		if(crawling)
 		{
-			if(field[y-1][x-1] == 8 || field[y-1][x+1] == 8 || 
-				field[y+1][x-1] == 8 || field[y+1][x+1] == 8)
-				field[y][x] = 8;
+			if(loadedmap[y-1][x-1] == 8 || loadedmap[y-1][x+1] == 8 || 
+				loadedmap[y+1][x-1] == 8 || loadedmap[y+1][x+1] == 8)
+				loadedmap[y][x] = 8;
 			else
-				field[y][x] = objectmodel[108][0];
+				loadedmap[y][x] = objectmodel[108][0];
 		}
 		else
-			field[y][x] = objectmodel[101][0];
+			loadedmap[y][x] = objectmodel[101][0];
 	}
 	else
-		field[y][x] = objectmodel[108][0];
+		loadedmap[y][x] = objectmodel[108][0];
 	WeaponLoad();
-	if(objectmodel[field[y][HandX]][4] == 0 && HandX >= 0 && HandX <= MapSizeX){
+	if(objectmodel[loadedmap[y][HandX]][4] == 0 && HandX >= 0 && HandX <= MapSizeX){
 		if(weapon[weaponslot] != 0){
 			if(HandX == x-1)
 				SkinWeapon = objectmodel[113+weapon[weaponslot]][0];
 			else if(HandX == x+1)
 				SkinWeapon = objectmodel[113+weapon[weaponslot]+24][0];
-			field[y][HandX] = SkinWeapon;
+			loadedmap[y][HandX] = SkinWeapon;
 		}
 	}
 	//Lock-on

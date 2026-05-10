@@ -779,8 +779,8 @@ void InventoryScreen()
 		TextOutput(UI, "INVENTORY:", 1,2, 16,0, 30);
 		TextOutput(UI, "INFO:", 1,20, 16,0, 30);
 		//TextOutput(UI, HUD, 9,2, 0,15, 30);
-		TextOutput(UI, Health, 9,3, 2,15, HP);
-		TextOutput(UI, Stamina, 9,3, 16,14, energy);
+		TextOutput(UI, Health, 9,3, 2,15, int(HP));
+		TextOutput(UI, Stamina, 9,3, 16,14, int(energy));
 		TextOutput(UI, "[Esc]", 11,2, 7,0, 30);
 		TextOutput(UI, "back", 11,8, 16,0, 30);
 		//TextOutput(UI, "[Enter] - use", 12,1, 16,0, 30);
@@ -882,7 +882,7 @@ void DataScreen(int option)//0 is for saving; 1 is for loading
 		
 		char buf[3];
 		for (int i = 0; i < 5; i++) {
-			_itoa(i, buf, 10);
+			_itoa_s(i, buf, 10);
 			TextOutput(UI, buf, 2 + i, 1, 16, 0, 30);
 		}
 		//TextOutput(UI, navigatehint,	12,28, 16,0, 30);
@@ -1573,7 +1573,7 @@ void game()
 			op = 0;
 			UpdateMap();//Setting up
 			LightMapLoad();
-			Update(loadedmap);
+			Update();
 
 			Video(loadedmap);//Output
 			Audio();
@@ -1688,9 +1688,9 @@ void Startup()
 	system("cls");
 	char text[128];
 	ifstream file;
-	if(language == "english")
+	if(strcmp(language, "english") == 0)
 		file.open("C:\\Program Files\\Teen's rise\\game\\translate\\english\\disclaimer.txt");
-	else if(language == "russian")
+	else if(strcmp(language, "russian") == 0)
 		file.open("C:\\Program Files\\Teen's rise\\game\\translate\\russian\\disclaimer.txt");
 	for(int i = 1; !file.eof(); i++){
 		file.getline(text, 128);
@@ -1764,7 +1764,6 @@ void main()
 	// HANDLE hCon = CreateConsoleScreenBuffer(GENERIC_READ | GENERIC_WRITE, 0, NULL, CONSOLE_TEXTMODE_BUFFER, NULL);
 	SetConsoleTitle("Teen's Rise");//Teen's Rise title
 	setlocale(LC_ALL, "rus");
-	SetConsoleOutputCP(866);
 	system("color f");//white font
 	
 	/*CONSOLE_FONT_INFOEX cfi;
