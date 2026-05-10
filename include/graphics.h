@@ -6,7 +6,7 @@
 #include <Xinput.h>
 
 #include "script.h"//Local libraries
-#include "Input.h"
+#include "input.h"
 
 using namespace std;
 
@@ -330,19 +330,22 @@ void DrawFrame()
 }
 void DrawWindow(char UI[64][64], int colorback[64][64], int colorfront[64][64])
 {
-	CONSOLE_CURSOR_INFO cursorinfo;
-	cursorinfo.bVisible = 0;
-	SetConsoleCursorInfo(hConsole, &cursorinfo);
-	Color(0,15);
-	for(int j = 0; j < 14; j++){
-		cout << "\t\t\t";
-		for(int i = 0; i < 37; i++){
-			Color(colorback[j][i], colorfront[j][i]);
-			cout << UI[j][i];
-		}
-		Color(0,15);
-		cout << endl;
-	}
+    CONSOLE_CURSOR_INFO cursorinfo;
+    cursorinfo.bVisible = 0;
+    SetConsoleCursorInfo(hConsole, &cursorinfo);
+    Color(0, 15);
+    DWORD written;
+    for (int j = 0; j < 14; j++) {
+        const char* tab = "\t\t\t";
+        WriteConsoleA(hConsole, tab, strlen(tab), &written, NULL);
+        for (int i = 0; i < 37; i++) {
+            Color(colorback[j][i], colorfront[j][i]);
+            WriteConsoleA(hConsole, &UI[j][i], 1, &written, NULL);
+        }
+        Color(0, 15);
+        const char* nl = "\n";
+        WriteConsoleA(hConsole, nl, 1, &written, NULL);
+    }
 }
 void Video(int map[256][256])
 {

@@ -26,9 +26,9 @@
 #include "graphics.h"//Engine fragments
 #include "audio.h"
 #include "GameMechanics.h"
-#include "AI.h"
+#include "ai.h"
 #include "script.h"
-#include "Input.h"
+#include "input.h"
 
 using namespace std;
 
@@ -66,7 +66,7 @@ void ControlsSettings()
 
 	int pointer = 0;
 	bool click = false;
-	int type = 0;
+	// int type = 0; //Control type
 	bool conflict;
 	int k, j, i;
 	
@@ -86,10 +86,10 @@ void ControlsSettings()
 		conflict = false;
 		
 		char UI[64][64];
-		for (int j = 0; j < 14; j++)
-			for (int i = 0; menupattern[j][i] != 0; i++)
+		for (j = 0; j < 14; j++)
+			for (i = 0; menupattern[j][i] != 0; i++)
 				UI[j][i] = menupattern[j][i];
-		for(int i = 0; i < 12; i++)
+		for(i = 0; i < 12; i++)
 			TextOutput(UI, colorback, colorfront, "|", 2+i, 7, 16, 0, 10);
 		TextOutput(UI, colorback, colorfront, "_________________", 9, 19, 16, 0, 16);
 		TextOutput(UI, colorback, colorfront, "[Q] <-", 1, 2, 16, 0, 10);
@@ -615,7 +615,7 @@ void Shop(int catalog[32])
 }
 void ItemBoxScreen()
 {
-	int arr, pointerY = 0, pointerX = 0;
+	int arr = 0, pointerY = 0, pointerX = 0;
 	enum type
 	{
 		arr_inventory,
@@ -1170,7 +1170,7 @@ void Phone()
 			TextOutput(UI, colorback, colorfront, "  [A][Space][D]", 8,1, 16,15, 100);
 		}
 		else if(app == weather){
-			int bgcolor, frcolor;
+			int bgcolor = 0, frcolor = 15;
 			for(i = 0; i < 6; i++){
 
 				if(weatherforecast[hr+i] == 0)
@@ -1615,6 +1615,9 @@ void menu()
 	Localize(SettingsButton, 9, "\\menu.txt");
 	Localize(QuitGameButton, 10, "\\menu.txt");
 	system("cls");
+	CONSOLE_CURSOR_INFO cursorinfo;
+	cursorinfo.bVisible = 0;
+	SetConsoleCursorInfo(hConsole, &cursorinfo);
 
 	while(1)
 	{
@@ -1767,7 +1770,8 @@ void main()
 	HANDLE hCon = CreateConsoleScreenBuffer(GENERIC_READ | GENERIC_WRITE, 0, NULL, 
 		CONSOLE_TEXTMODE_BUFFER, NULL);
 	SetConsoleTitle("Teen's Rise");//Teen's Rise title
-	setlocale(LC_ALL, "rus");//Add russian language support
+	setlocale(LC_ALL, "rus");
+	SetConsoleOutputCP(866);
 	system("color f");//white font
 	
 	/*CONSOLE_FONT_INFOEX cfi;

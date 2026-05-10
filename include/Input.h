@@ -123,8 +123,8 @@ void XboxControllerInput()
 	float LT = state.Gamepad.bLeftTrigger;
 	float RT = state.Gamepad.bRightTrigger;
 	int X = 0, Y = 1;
-	float LS[2] = {state.Gamepad.sThumbLX, state.Gamepad.sThumbLY};
-	float RS[2] = {state.Gamepad.sThumbRX, state.Gamepad.sThumbRY};
+	SHORT LS[2] = {state.Gamepad.sThumbLX, state.Gamepad.sThumbLY};
+	SHORT RS[2] = {state.Gamepad.sThumbRX, state.Gamepad.sThumbRY};
 
 	if((IsPressed & XINPUT_GAMEPAD_START) || GetAsyncKeyState(Esc)) 
 		paused = true;

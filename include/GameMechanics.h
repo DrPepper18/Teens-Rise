@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include <string>
-#include "Physics.h"
+#include "physics.h"
 #define Back 8
 #define Tab 9
 #define Enter 13
@@ -86,7 +86,7 @@ struct Weapon
 {
 	int type;
 	char name[128];
-	float damage;
+	double damage;
 	int distance;
 	int reloadspeed;
 	int capacity[2];
@@ -216,11 +216,11 @@ Item item[32] = {
 };
 
 int objectmodel[160][5] = {
-	//0 - number\
-	//1 - text symbol\
-	//2 - background color\
-	//3 - secondary color\
-	//4 - obstacle or not\
+	//0 - number
+	//1 - text symbol
+	//2 - background color
+	//3 - secondary color
+	//4 - obstacle or not
 //Landscape Texture
 {0, ' ', 0, 0},			//Hole
 {1, ',', 2, 10},		//Grass                                 
@@ -331,7 +331,7 @@ int objectmodel[160][5] = {
 {99, ' ', 15,0, 0},
 {100, 'x', 0,12, 1},//Map limit
 //Characters
-{ 101, '0', 16, 15 },	//Player
+{101, '0', 16, 15},	//Player
 {102, '0', 16, 10},	//Geek
 {103, '0', 16, 0},	//Doomer
 {104, '0', 16, 5},	//Zoomer
@@ -424,14 +424,14 @@ bool sickness = false;
 bool cold = false;
 bool interaction = false;
 int currentmove = 0;
-float wantedlevel = 0,
+double wantedlevel = 0,
 	geekheat = 0, doomerheat = 0, zoomerheat = 0,
 	gopnicheat = 0, boomerheat = 0;
-float geekrespect = 0.5, doomerrespect = 0.5, zoomerrespect = 0.25,
+double geekrespect = 0.5, doomerrespect = 0.5, zoomerrespect = 0.25,
 	gopnicrespect = 0.25, boomerrespect = 0.5;
-float FullHP = 5.00;
+double FullHP = 5.00;
 int speed = 2;
-float stamina = 5.00;
+double stamina = 5.00;
 int respect = 50;
 
 enum skills
@@ -476,8 +476,8 @@ Skill skill[32] = {
 	{false,},
 };
 
-float HP = FullHP;
-float energy = stamina;
+double HP = FullHP;
+double energy = stamina;
 //Weapon Info
 int ColorWeapon;
 int DistanceWeapon = 0;
@@ -586,15 +586,15 @@ char *Localize(char *text, int row, char *filename)
 {
 	ifstream file;
 	char filepath[128] = "C:\\Program Files\\Teen's rise\\game\\translate\\";
-	strcat(filepath, language);
-	strcat(filepath, filename);
+	strcat_s(filepath, language);
+	strcat_s(filepath, filename);
 	file.open(filepath);
 	for(int i = 0; i < row; i++)
 		file.getline(text, 1000, '\n');
 	file.close();
 	return text;
 }
-char numbertotext(int j, int count){
+char numbertotext(int j){
 	int number = j/1000;
 	return number;
 }
@@ -670,7 +670,6 @@ void LoadData(int slot)
 	char ErrorText[128];
 	Localize(ErrorText, 25, "\\menu.txt");
 	char buffer[100];
-	int pos = 1;
 	ifstream file;
 	if(slot == 0)	file.open("C:\\Program Files\\Teen's rise\\game\\saves\\autosave.txt");
 	if(slot == 1)	file.open("C:\\Program Files\\Teen's rise\\game\\saves\\savedata1.txt");
@@ -715,7 +714,8 @@ void SaveData(int slot)
 	Localize(ErrorText, 25, "\\menu.txt");
 	//Preparing save data
 	time_t timer = time(NULL);
-	struct tm* aTm = localtime(&timer);
+	struct tm aTm;
+	localtime_s(&aTm, &timer);
 	ofstream file;
 	if(slot == 0)	file.open("C:\\Program Files\\Teen's rise\\game\\saves\\autosave.txt");
 	if(slot == 1)	file.open("C:\\Program Files\\Teen's rise\\game\\saves\\savedata1.txt");
@@ -727,8 +727,8 @@ void SaveData(int slot)
 	{
 		cout << SavingLabel;
 		file << "SAVE DATA" << endl;
-		file << aTm->tm_hour<<":"<<aTm->tm_min<<" "<<
-			aTm->tm_mday <<"."<<aTm->tm_mon+1<<"."<<aTm->tm_year+1900 << endl;
+		file << aTm.tm_hour<<":"<<aTm.tm_min<<" "<<
+			aTm.tm_mday <<"."<<aTm.tm_mon+1<<"."<<aTm.tm_year+1900 << endl;
 		for(int j = -2; j < 3; j++){
 			for(int i = -3; i < 4; i++){
 				if(loadedmap[y+j][x+i] < 10)
@@ -778,30 +778,30 @@ char *WeatherAt(int hour)
 	if(weatherforecast[hour] == snow)
 		return "Snow";
 }
-void Use(int item)
+void Use(int item_id)
 {
-	if(inventory[item] == iInstantNoodles){
+	if(inventory[item_id] == iInstantNoodles){
 		HP += min(2, FullHP - HP);
 	}
-	if(inventory[item] == iBurger){
+	if(inventory[item_id] == iBurger){
 		HP = FullHP;
 	}
-	else if(inventory[item] == iSoda){
+	else if(inventory[item_id] == iSoda){
 		HP += min(4, FullHP - HP);
 		energy = stamina;
 	}
-	else if(inventory[item] == iEnergyDrink){
+	else if(inventory[item_id] == iEnergyDrink){
 		if((hr > 23 || hr < 05) && tired)
 			tired = false;
 		else
 			HP += 6;
 			energy = stamina + 100;
 	}
-	else if(inventory[item] == iLemonTea){
+	else if(inventory[item_id] == iLemonTea){
 		cold = false;
 		energy += 5;
 	}
-	inventory[item] = 0;
+	inventory[item_id] = 0;
 }
 void LockingOn()
 {
@@ -818,11 +818,11 @@ void LockingOn()
 	}
 	LockOn = lockednpc;
 }
-void LoadObject(int i, int item, int y, int x)
+void LoadObject(int i, int item, int coordY, int coordX)
 {
 	actionobject[i][0] = item,
-	actionobject[i][1] = y,
-	actionobject[i][2] = x;
+	actionobject[i][1] = coordY,
+	actionobject[i][2] = coordX;
 }
 void LoadMap()
 {
@@ -869,7 +869,7 @@ void LoadMap()
 }
 void LocationSwitch()
 {
-	int prevlocation = location;
+	//int prevlocation = location;
 	bool change = false;
 	if(location == safehouse1)
 	{

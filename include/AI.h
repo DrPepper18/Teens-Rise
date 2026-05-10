@@ -100,7 +100,7 @@ enum Moveset
 
 void LoadNPC(int i, 
 	int y_pos, int x_pos, int fraction, int alignment,
-	int weapon, int item,
+	int weapon_id, int item_id,
 	int MaxHP, int Stamina){
 
 	npc[i][npc_y] = y_pos;//X and Y coordinates
@@ -109,8 +109,8 @@ void LoadNPC(int i,
 	npc[i][npc_fraction] = fraction;//Character info
 	npc[i][npc_attitude] = alignment;
 
-	npc[i][npc_weapon] = weapon;//Inventory
-	npc[i][npc_item] = item;
+	npc[i][npc_weapon] = weapon_id;//Inventory
+	npc[i][npc_item] = item_id;
 
 	if(MaxHP == 'd'){//Max health
 		switch(fraction)
@@ -327,7 +327,7 @@ void GoTo(int i, int spotY, int spotX)
 		&& objectmodel[loadedmap[npc[i][npc_y]][npc[i][npc_x]+1]][4] != 1)
 		npc[i][npc_x]++;
 }
-void Follow(int i, int speed, int spotY, int spotX)
+void Follow(int i, int spotY, int spotX)
 {
 	if(npc[i][npc_y] > spotY
 		&& objectmodel[loadedmap[npc[i][npc_y]-1][npc[i][npc_x]]][4] != 1)
@@ -342,7 +342,7 @@ void Follow(int i, int speed, int spotY, int spotX)
 		&& objectmodel[loadedmap[npc[i][npc_y]][npc[i][npc_x]+1]][4] != 1)
 		npc[i][npc_x]++;
 }
-void GoAway(int i, int speed, int spotY, int spotX)
+void GoAway(int i, int spotY, int spotX)
 {
 	if(npc[i][npc_y] > spotY 
 		&& objectmodel[loadedmap[npc[i][npc_y]+1][npc[i][npc_x]]][4] != 1)
@@ -367,11 +367,11 @@ void AIDoomer(int i)
 		if(npc[i][npc_attitude] == angry)
 		{
 			if(doomerheat == 1)
-				Follow(i,2,y,x);
+				Follow(i,y,x);
 			else if(doomerheat == 2)
-				Follow(i,2,y,x);
+				Follow(i,y,x);
 			else if(doomerheat == 3)
-				Follow(i,2,y,x);
+				Follow(i,y,x);
 		}
 	}
 	else 1;
@@ -382,7 +382,7 @@ void AIZoomer(int i)
 		npc[i][npc_attitude] = scared;
 	if(zoomerrespect < 0.5){
 		if(npc[i][npc_attitude] == scared)
-			GoAway(i,2,1,1);
+			GoAway(i,1,1);
 	}
 	else
 		Roam(i);
@@ -396,9 +396,9 @@ void AIGeek(int i)
 		if(npc[i][npc_attitude] == neutral)
 			Roam(i);
 		if(npc[i][npc_attitude] == angry)
-			Follow(i,2,1,1);
+			Follow(i,1,1);
 		if(npc[i][npc_attitude] == scared)
-			GoAway(i,1,1,1);
+			GoAway(i,1,1);
 	}
 	else	
 		Roam(i);
@@ -410,13 +410,13 @@ void AIGopnic(int i)
 		if(npc[i][npc_attitude] == neutral)
 		{
 			if(npc[i][npc_item] != iSeeds)
-				Follow(i,1,y,x);
+				Follow(i,y,x);
 			else
 				1;
 		}
 		if(npc[i][npc_attitude] == angry)
 		{
-			Follow(i,2,y,x);
+			Follow(i,y,x);
 			if(abs(npc[i][npc_y] - y) > 5){
 				if(npc[i][npc_weapon] == iFireCracker)
 					Attack(iFireCracker);
@@ -435,7 +435,7 @@ void AIGopnic(int i)
 	else
 	{
 		if(npc[i][npc_attitude] == ally)
-			Follow(i,1,y,x);
+			Follow(i,y,x);
 		else
 			Roam(i);
 	}
@@ -444,13 +444,13 @@ void AIBoomer(int i)
 {
 	if(boomerrespect < 0.5){
 		if(npc[i][npc_attitude] == angry)
-			Follow(i,2,1,1);
+			Follow(i,y,x);
 	}
 	else{
 		if(npc[i][npc_attitude] == neutral)
 			Roam(i);
 		else if(npc[i][npc_attitude] == ally)
-			Follow(i,2,1,1);
+			Follow(i,1,1);
 	}
 }
 void AIPolice(int i)
@@ -462,10 +462,10 @@ void AIPolice(int i)
 	//if(hr >= 8 && hr <= 14)
 		//wantedlevel += truancy.wantedlevel;
 	if(wantedlevel > 0 && wantedlevel < 1)
-		Follow(i,1,y,x);
+		Follow(i,y,x);
 	if(wantedlevel >= 1)
 	{
-		Follow(i,2,y,x);
+		Follow(i,y,x);
 		if(npc[i][npc_y] == y && npc[i][npc_x] == x) 1;
 			//knocked = true, gameover = true, 
 			//failreason = "��������";
@@ -479,10 +479,10 @@ void AICitizen(int i)
 		Roam(i);
 	}
 	else if(npc[i][npc_attitude] == angry){
-		Follow(i,1,y,x);
+		Follow(i,y,x);
 	}
 	else if(npc[i][npc_attitude] == scared){
-		GoAway(i,2,y,x);
+		GoAway(i,y,x);
 	}
 }
 void AI()
