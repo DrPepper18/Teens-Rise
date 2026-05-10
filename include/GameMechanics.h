@@ -86,7 +86,7 @@ struct Weapon
 {
 	int type;
 	char name[128];
-	int damage;
+	float damage;
 	int distance;
 	int reloadspeed;
 	int capacity[2];
@@ -331,7 +331,7 @@ int objectmodel[160][5] = {
 {99, ' ', 15,0, 0},
 {100, 'x', 0,12, 1},//Map limit
 //Characters
-{101, 2, 16, 15},	//Player
+{ 101, '0', 16, 15 },	//Player
 {102, '0', 16, 10},	//Geek
 {103, '0', 16, 0},	//Doomer
 {104, '0', 16, 5},	//Zoomer
@@ -579,8 +579,7 @@ int SensivityY = 65, SensivityX = 42;
 int op = 0;
 int framemodulus = 0;
 
-void Color(int a, int b)
-{
+void Color(int a, int b) {
 	SetConsoleTextAttribute(hConsole, (WORD) ((a << 4)| b));
 }
 char *Localize(char *text, int row, char *filename)
@@ -781,7 +780,6 @@ char *WeatherAt(int hour)
 }
 void Use(int item)
 {
-	int j, i;
 	if(inventory[item] == iInstantNoodles){
 		HP += min(2, FullHP - HP);
 	}

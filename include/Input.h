@@ -40,22 +40,62 @@ int KeyboardControlsType[2][16] = {
 	{'W','S','A','D',VK_SPACE,'C','E','F','L','J','1','2','3','4','Q'}
 };
 int XboxControlsType[4][16] = {
-{//Default
-XINPUT_GAMEPAD_DPAD_UP,
-XINPUT_GAMEPAD_DPAD_DOWN,
-XINPUT_GAMEPAD_DPAD_LEFT,
-XINPUT_GAMEPAD_DPAD_RIGHT,
-XINPUT_GAMEPAD_A,
-XINPUT_GAMEPAD_B,
-XINPUT_GAMEPAD_Y,
-XINPUT_GAMEPAD_X,
-XINPUT_GAMEPAD_LEFT_SHOULDER,
-XINPUT_GAMEPAD_RIGHT_SHOULDER,
-XINPUT_GAMEPAD_DPAD_UP,
-XINPUT_GAMEPAD_DPAD_DOWN,
-XINPUT_GAMEPAD_DPAD_LEFT,
-XINPUT_GAMEPAD_DPAD_RIGHT,},
-{//Alternative
+	{//Default
+		XINPUT_GAMEPAD_DPAD_UP,
+		XINPUT_GAMEPAD_DPAD_DOWN,
+		XINPUT_GAMEPAD_DPAD_LEFT,
+		XINPUT_GAMEPAD_DPAD_RIGHT,
+		XINPUT_GAMEPAD_A,
+		XINPUT_GAMEPAD_B,
+		XINPUT_GAMEPAD_Y,
+		XINPUT_GAMEPAD_X,
+		XINPUT_GAMEPAD_LEFT_SHOULDER,
+		XINPUT_GAMEPAD_RIGHT_SHOULDER,
+		XINPUT_GAMEPAD_DPAD_UP,
+		XINPUT_GAMEPAD_DPAD_DOWN,
+		XINPUT_GAMEPAD_DPAD_LEFT,
+		XINPUT_GAMEPAD_DPAD_RIGHT
+	},
+	{//Alternative
+		XINPUT_GAMEPAD_DPAD_UP,
+		XINPUT_GAMEPAD_DPAD_DOWN,
+		XINPUT_GAMEPAD_DPAD_LEFT,
+		XINPUT_GAMEPAD_DPAD_RIGHT,
+		XINPUT_GAMEPAD_A,
+		XINPUT_GAMEPAD_B,
+		XINPUT_GAMEPAD_Y,
+		XINPUT_GAMEPAD_X,
+		XINPUT_GAMEPAD_LEFT_SHOULDER,
+		XINPUT_GAMEPAD_RIGHT_SHOULDER,
+		XINPUT_GAMEPAD_DPAD_UP,
+		XINPUT_GAMEPAD_DPAD_DOWN,
+		XINPUT_GAMEPAD_DPAD_LEFT,
+		XINPUT_GAMEPAD_DPAD_RIGHT
+	},
+};
+
+int Keyboard[16] = 
+{
+	KeyboardControlsType[0][Up],
+	KeyboardControlsType[0][Down],
+	KeyboardControlsType[0][Left],
+	KeyboardControlsType[0][Right], 
+
+	KeyboardControlsType[0][Sprint],
+	KeyboardControlsType[0][Crawl], 
+	KeyboardControlsType[0][Action], 
+	KeyboardControlsType[0][Punch], 
+	KeyboardControlsType[0][Aim],
+	KeyboardControlsType[0][Weapon],
+	
+	KeyboardControlsType[0][Slot1],
+	KeyboardControlsType[0][Slot2],
+	KeyboardControlsType[0][Slot3],
+	KeyboardControlsType[0][Slot4],
+	KeyboardControlsType[0][UseItem]
+};
+
+int X360gamepad[16] = {
 	XINPUT_GAMEPAD_DPAD_UP,
 	XINPUT_GAMEPAD_DPAD_DOWN,
 	XINPUT_GAMEPAD_DPAD_LEFT,
@@ -69,30 +109,7 @@ XINPUT_GAMEPAD_DPAD_RIGHT,},
 	XINPUT_GAMEPAD_DPAD_UP,
 	XINPUT_GAMEPAD_DPAD_DOWN,
 	XINPUT_GAMEPAD_DPAD_LEFT,
-	XINPUT_GAMEPAD_DPAD_RIGHT,},
-};
-
-int Keyboard[16] = 
-{KeyboardControlsType[0][Up], KeyboardControlsType[0][Down], KeyboardControlsType[0][Left], KeyboardControlsType[0][Right], 
-KeyboardControlsType[0][Sprint], KeyboardControlsType[0][Crawl], KeyboardControlsType[0][Action], KeyboardControlsType[0][Punch], 
-KeyboardControlsType[0][Aim],KeyboardControlsType[0][Weapon],
-KeyboardControlsType[0][Slot1],KeyboardControlsType[0][Slot2],KeyboardControlsType[0][Slot3],KeyboardControlsType[0][Slot4],KeyboardControlsType[0][UseItem],};
-
-int X360gamepad[16] = {
-XINPUT_GAMEPAD_DPAD_UP,
-XINPUT_GAMEPAD_DPAD_DOWN,
-XINPUT_GAMEPAD_DPAD_LEFT,
-XINPUT_GAMEPAD_DPAD_RIGHT,
-XINPUT_GAMEPAD_A,
-XINPUT_GAMEPAD_B,
-XINPUT_GAMEPAD_Y,
-XINPUT_GAMEPAD_X,
-XINPUT_GAMEPAD_LEFT_SHOULDER,
-XINPUT_GAMEPAD_RIGHT_SHOULDER,
-XINPUT_GAMEPAD_DPAD_UP,
-XINPUT_GAMEPAD_DPAD_DOWN,
-XINPUT_GAMEPAD_DPAD_LEFT,
-XINPUT_GAMEPAD_DPAD_RIGHT,
+	XINPUT_GAMEPAD_DPAD_RIGHT,
 };
 int KeyboardType = 0, XboxType = 0, DualShockType = 0;
 

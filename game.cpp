@@ -11,7 +11,8 @@
 *                                                   *
 *NOTICE: Excluding conhost.exe requirments          *
 *****************************************************/
-//#pragma comment (lib, "winmm.lib")
+
+
 #include <iostream>//System libraries
 #include <conio.h>
 #include <Windows.h>
@@ -350,7 +351,7 @@ void Settings()
 					LanguageButton, 
 					5,2, 16,0, 15);
 			TextOutput(UI, colorback, colorfront, 
-					"�������", 
+					"Russian", 
 					5,20, 16,0, 15);
 		}
 		else if(settingof == audio)
@@ -1719,7 +1720,7 @@ void Startup()
 	if (GetUserName((TCHAR*)name, &size))
 		wcout << L"\n\t\t\tHello, " << name << L"!\n";
 	else
-		cout << "\n\t\t\tHello, unnamed person!\n";
+		cout << "\n\t\t\tHello, noname!\n";
 	Sleep(2000);
 }
 void GlobalLocalize()
@@ -1765,7 +1766,7 @@ void main()
 {
 	HANDLE hCon = CreateConsoleScreenBuffer(GENERIC_READ | GENERIC_WRITE, 0, NULL, 
 		CONSOLE_TEXTMODE_BUFFER, NULL);
-	SetConsoleTitle(L"Teen's Rise");//Teen's Rise title
+	SetConsoleTitle("Teen's Rise");//Teen's Rise title
 	setlocale(LC_ALL, "rus");//Add russian language support
 	system("color f");//white font
 	
@@ -1786,7 +1787,7 @@ void main()
 	cout << 
 		"LANGUAGE:" << endl <<
 		"English - 1" << endl <<
-		"������� - 2" << endl;
+		"Russian - 2" << endl;
 
 	while(1)
 	{
@@ -1803,7 +1804,7 @@ void main()
 	cout << ". . .";
 	GlobalLocalize();
 	//Localize constant data's in game: weapons/items names and descriptions
-	Startup();//Disclaimer and (c)Bluscreendez logo
+	Startup();//Disclaimer and (c) Bluscreendez logo
 	while(1){//Main loop
 		menu();
 		game();
