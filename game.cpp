@@ -50,19 +50,19 @@ void ControlsSettings()
 	char BindLabel[128];
 	char ConflictLabel[128];
 
-	Localize(SprintLabel,	55, "\\menu.txt");
-	Localize(CrawlLabel,	56, "\\menu.txt");
-	Localize(ActionLabel,	57, "\\menu.txt");
-	Localize(PunchLabel,	58, "\\menu.txt");
-	Localize(LockOnLabel,	59, "\\menu.txt");
-	Localize(WeaponLabel,	60, "\\menu.txt");
-	Localize(Slot1Label,	61, "\\menu.txt");
-	Localize(Slot2Label,	62, "\\menu.txt");
-	Localize(Slot3Label,	63, "\\menu.txt");
-	Localize(Slot4Label,	64, "\\menu.txt");
-	Localize(UseItemLabel,	65, "\\menu.txt");
-	Localize(BindLabel,		66, "\\menu.txt");
-	Localize(ConflictLabel, 67, "\\menu.txt");
+	Localize(SprintLabel,	55, "/menu.txt");
+	Localize(CrawlLabel,	56, "/menu.txt");
+	Localize(ActionLabel,	57, "/menu.txt");
+	Localize(PunchLabel,	58, "/menu.txt");
+	Localize(LockOnLabel,	59, "/menu.txt");
+	Localize(WeaponLabel,	60, "/menu.txt");
+	Localize(Slot1Label,	61, "/menu.txt");
+	Localize(Slot2Label,	62, "/menu.txt");
+	Localize(Slot3Label,	63, "/menu.txt");
+	Localize(Slot4Label,	64, "/menu.txt");
+	Localize(UseItemLabel,	65, "/menu.txt");
+	Localize(BindLabel,		66, "/menu.txt");
+	Localize(ConflictLabel, 67, "/menu.txt");
 
 	int pointer = 0;
 	bool click = false;
@@ -133,15 +133,15 @@ void ControlsSettings()
 
 		if(InputDevice == keyboard){
 			TextOutput(UI, KeyName(Keyboard[Sprint]),	2,9, 7,0, 10);
-			TextOutput(UI, KeyName(Keyboard[Crawl]),		3,9, 7,0, 10);
+			TextOutput(UI, KeyName(Keyboard[Crawl]),	3,9, 7,0, 10);
 			TextOutput(UI, KeyName(Keyboard[Action]),	4,9, 7,0, 10);
-			TextOutput(UI, KeyName(Keyboard[Punch]),		5,9, 7,0, 10);
+			TextOutput(UI, KeyName(Keyboard[Punch]),	5,9, 7,0, 10);
 			TextOutput(UI, KeyName(Keyboard[Aim]),		6,9, 7,0, 10);
 			TextOutput(UI, KeyName(Keyboard[Weapon]),	7,9, 7,0, 10);
-			TextOutput(UI, KeyName(Keyboard[Slot1]),		8,9, 7,0, 10);
-			TextOutput(UI, KeyName(Keyboard[Slot2]),		9,9, 7,0, 10);
-			TextOutput(UI, KeyName(Keyboard[Slot3]),		10,9, 7,0, 10);
-			TextOutput(UI, KeyName(Keyboard[Slot4]),		11,9, 7,0, 10);
+			TextOutput(UI, KeyName(Keyboard[Slot1]),	8,9, 7,0, 10);
+			TextOutput(UI, KeyName(Keyboard[Slot2]),	9,9, 7,0, 10);
+			TextOutput(UI, KeyName(Keyboard[Slot3]),	10,9, 7,0, 10);
+			TextOutput(UI, KeyName(Keyboard[Slot4]),	11,9, 7,0, 10);
 			TextOutput(UI, KeyName(Keyboard[UseItem]),	12,9, 7,0, 10);
 		}
 		else if(InputDevice == Xbox_gamepad){
@@ -244,20 +244,20 @@ void Settings()
 	char FontSizeButton[128];
 	char LanguageButton[128];
 
-	Localize(VideoButton, 28, "\\menu.txt");
-	Localize(AudioButton, 29, "\\menu.txt");
-	Localize(GameButton, 30, "\\menu.txt");
-	Localize(ControlsButton, 31, "\\menu.txt");
+	Localize(VideoButton, 28, "/menu.txt");
+	Localize(AudioButton, 29, "/menu.txt");
+	Localize(GameButton, 30, "/menu.txt");
+	Localize(ControlsButton, 31, "/menu.txt");
 
-	Localize(VideoInfoLabel, 32, "\\menu.txt");
-	Localize(AudioInfoLabel, 33, "\\menu.txt");
-	Localize(GameInfoLabel, 34, "\\menu.txt");
-	Localize(ControlsInfoLabel, 35, "\\menu.txt");
+	Localize(VideoInfoLabel, 32, "/menu.txt");
+	Localize(AudioInfoLabel, 33, "/menu.txt");
+	Localize(GameInfoLabel, 34, "/menu.txt");
+	Localize(ControlsInfoLabel, 35, "/menu.txt");
 
-	Localize(FrameDelayButton, 37, "\\menu.txt");
-	Localize(FontButton, 38, "\\menu.txt");
-	Localize(FontSizeButton, 39, "\\menu.txt");
-	Localize(LanguageButton, 40, "\\menu.txt");
+	Localize(FrameDelayButton, 37, "/menu.txt");
+	Localize(FontButton, 38, "/menu.txt");
+	Localize(FontSizeButton, 39, "/menu.txt");
+	Localize(LanguageButton, 40, "/menu.txt");
 
 	int j;
 	system("cls");
@@ -541,7 +541,7 @@ void DetailsBehaviour(int density)
 }
 void Credits()
 {
-	fstream file("C:\\Program Files\\Teen's rise\\game\\translate\\credits.txt");
+	fstream file("translate/credits.txt");
 	file.close();
 }
 void Shop(int catalog[32])
@@ -837,12 +837,12 @@ void DataScreen(int option)//0 is for saving; 1 is for loading
 	char DateLabel[128];
 	char TotalLabel[128];
 	if(option == 0)
-		Localize(SaveLoadTitle, 16, "\\menu.txt");
+		Localize(SaveLoadTitle, 16, "/menu.txt");
 	else
-		Localize(SaveLoadTitle, 17, "\\menu.txt");
-	Localize(AutosaveLabel, 18, "\\menu.txt");
-	Localize(DateLabel, 19, "\\menu.txt");
-	Localize(TotalLabel, 20, "\\menu.txt");
+		Localize(SaveLoadTitle, 17, "/menu.txt");
+	Localize(AutosaveLabel, 18, "/menu.txt");
+	Localize(DateLabel, 19, "/menu.txt");
+	Localize(TotalLabel, 20, "/menu.txt");
 
 	int save = 0, load = 1;
 	int pointer;
@@ -888,9 +888,13 @@ void DataScreen(int option)//0 is for saving; 1 is for loading
 		//TextOutput(UI, navigatehint,	12,28, 16,0, 30);
 
 		char buffer[64];
-		if(pointer == 0) file.open("C:\\Program Files\\Teen's rise\\game\\saves\\autosave.txt");
-		else if(pointer == 1) file.open("C:\\Program Files\\Teen's rise\\game\\saves\\savedata1.txt");
-		else if(pointer == 2) file.open("C:\\Program Files\\Teen's rise\\game\\saves\\savedata2.txt");
+		if(pointer == 0)
+			file.open("saves/autosave.txt");
+		else if(pointer == 1)
+			file.open("saves/savedata1.txt");
+		else if(pointer == 2)
+			file.open("saves/savedata2.txt");
+		
 		file.getline(buffer, 64);
 		file.getline(buffer, 10, ' ');
 		file.getline(buffer, 4, '.');
@@ -915,9 +919,9 @@ void DataScreen(int option)//0 is for saving; 1 is for loading
 		file.close();
 		for(int i = 0; i < 3; i++)
 		{
-			if(i == 0) file.open("C:\\Program Files\\Teen's rise\\game\\saves\\autosave.txt");
-			if(i == 1) file.open("C:\\Program Files\\Teen's rise\\game\\saves\\savedata1.txt");
-			if(i == 2) file.open("C:\\Program Files\\Teen's rise\\game\\saves\\savedata2.txt");
+			if(i == 0) file.open("saves/autosave.txt");
+			if(i == 1) file.open("saves/savedata1.txt");
+			if(i == 2) file.open("saves/savedata2.txt");
 			file.getline(buffer, 64);
 			TextOutput(UI, buffer, 2+i,3, 16,0, 30);
 			file.close();
@@ -973,11 +977,11 @@ void pause()
 	char LoadGameButton[128];
 	char SettingsButton[128];
 	char QuitGameButton[128];
-	Localize(InventoryButton, 1, "\\pause.txt");
-	Localize(DiaryButton, 2, "\\pause.txt");
-	Localize(LoadGameButton, 3, "\\pause.txt");
-	Localize(SettingsButton, 4, "\\pause.txt");
-	Localize(QuitGameButton, 5, "\\pause.txt");
+	Localize(InventoryButton, 1, "/pause.txt");
+	Localize(DiaryButton, 2, "/pause.txt");
+	Localize(LoadGameButton, 3, "/pause.txt");
+	Localize(SettingsButton, 4, "/pause.txt");
+	Localize(QuitGameButton, 5, "/pause.txt");
 
 	while(1)
 	{
@@ -1057,11 +1061,11 @@ void Phone()
 	// char SubLabel3[128];
 	// char SubLabel4[128];
 	// char SubLabel5[128];
-	Localize(SearchLabel, 1, "\\phone.txt");
-	Localize(MessageLabel, 2, "\\phone.txt");
-	Localize(MusicLabel, 3, "\\phone.txt");
-	Localize(WeatherLabel, 4, "\\phone.txt");
-	Localize(MapLabel, 5, "\\phone.txt");
+	Localize(SearchLabel, 1, "/phone.txt");
+	Localize(MessageLabel, 2, "/phone.txt");
+	Localize(MusicLabel, 3, "/phone.txt");
+	Localize(WeatherLabel, 4, "/phone.txt");
+	Localize(MapLabel, 5, "/phone.txt");
 	int app = 0;
 	int pointer = 1;
 	int j, i;
@@ -1149,15 +1153,15 @@ void Phone()
 			TextOutput(UI, MapLabel, 6,1, 16,10, 100);
 		}
 		else if(app == message){
-			Localize(SubLabel1, 7, "\\phone.txt");
-			Localize(SubLabel2, 7, "\\phone.txt");
+			Localize(SubLabel1, 7, "/phone.txt");
+			Localize(SubLabel2, 7, "/phone.txt");
 			TextOutput(UI, SubLabel1, 3,1, 16,15, 100);
 			TextOutput(UI, "[--:--]", 4,1, 16,15, 100);
 			TextOutput(UI, SubLabel2, 5,1, 16,15, 100);
 		}
 		else if(app == walkman){
-			Localize(SubLabel1, 10, "\\phone.txt");
-			Localize(SubLabel2, 11, "\\phone.txt");
+			Localize(SubLabel1, 10, "/phone.txt");
+			Localize(SubLabel2, 11, "/phone.txt");
 			TextOutput(UI, SubLabel1, 3,1, 16,15, 100);
 			TextOutput(UI, SubLabel2, 4,1, 16,7, 100);
 			TextOutput(UI, " Prev|Pause|Next", 7,1, 16,15, 100);
@@ -1551,7 +1555,7 @@ void game()
 	Color(0,15);
 	system("cls");
 	Briefing();
-	//PlaySound(L"C:\\Program Files\\Teen's rise\\audio\\ost\\test.wav", NULL, SND_FILENAME | SND_ASYNC | SND_NODEFAULT);
+	//PlaySound(L"audio/ost/test.wav", NULL, SND_FILENAME | SND_ASYNC | SND_NODEFAULT);
 	while(1)
 	{
 		system("cls");
@@ -1603,11 +1607,11 @@ void menu()
 	char QuitGameButton[32];
 	int j, i;
 	int pointer = 1;
-	Localize(Title, 6, "\\menu.txt");
-	Localize(LoadGameButton, 7, "\\menu.txt");
-	Localize(NewGameButton, 8, "\\menu.txt");
-	Localize(SettingsButton, 9, "\\menu.txt");
-	Localize(QuitGameButton, 10, "\\menu.txt");
+	Localize(Title, 6, "/menu.txt");
+	Localize(LoadGameButton, 7, "/menu.txt");
+	Localize(NewGameButton, 8, "/menu.txt");
+	Localize(SettingsButton, 9, "/menu.txt");
+	Localize(QuitGameButton, 10, "/menu.txt");
 	system("cls");
 	CONSOLE_CURSOR_INFO cursorinfo;
 	cursorinfo.bVisible = 0;
@@ -1689,9 +1693,15 @@ void Startup()
 	char text[128];
 	ifstream file;
 	if(strcmp(language, "english") == 0)
-		file.open("C:\\Program Files\\Teen's rise\\game\\translate\\english\\disclaimer.txt");
+		file.open("translate/english/disclaimer.txt");
 	else if(strcmp(language, "russian") == 0)
-		file.open("C:\\Program Files\\Teen's rise\\game\\translate\\russian\\disclaimer.txt");
+		file.open("translate/russian/disclaimer.txt");
+	if(!file.is_open())
+	{
+		cout << "Error: can't load disclaimer text file!" << endl;
+		Sleep(2000);
+		return;
+	}
 	for(int i = 1; !file.eof(); i++){
 		file.getline(text, 128);
 		cout << text << endl;
@@ -1724,40 +1734,40 @@ void GlobalLocalize()
 {
 	int j, i;
 	for(i = 0, j = 0; i < 42; i+=3, j++)
-		Localize(weaponID[j].name, 1+i, "\\weapons_items.txt");
+		Localize(weaponID[j].name, 1+i, "/weapons_items.txt");
 	for(i = 0, j = 0; i < 75; i+=3, j++)
-		Localize(item[j].name, 1+i, "\\weapons_items.txt");
+		Localize(item[j].name, 1+i, "/weapons_items.txt");
 	for(i = 1, j = 0; i < 75; i+=3, j++)
-		Localize(item[j].description, 1+i, "\\weapons_items.txt");
+		Localize(item[j].description, 1+i, "/weapons_items.txt");
 
 	for(i = 1; i < 16; i++)
-		Localize(line[player][i-1], i, "\\ingame\\lines_alex.txt");
+		Localize(line[player][i-1], i, "/ingame/lines_alex.txt");
 	for(i = 1; i < 16; i++)
-		Localize(line[npc_geek][i-1], i, "\\ingame\\lines_geek.txt");
+		Localize(line[npc_geek][i-1], i, "/ingame/lines_geek.txt");
 	for(i = 1; i < 16; i++)
-		Localize(line[npc_doomer][i-1], i, "\\ingame\\lines_doomer.txt");
+		Localize(line[npc_doomer][i-1], i, "/ingame/lines_doomer.txt");
 	for(i = 1; i < 16; i++)
-		Localize(line[npc_zoomer][i-1], i, "\\ingame\\lines_zoomer.txt");
+		Localize(line[npc_zoomer][i-1], i, "/ingame/lines_zoomer.txt");
 	for(i = 1; i < 16; i++)
-		Localize(line[npc_gopnic][i-1], i, "\\ingame\\lines_gopnic.txt");
+		Localize(line[npc_gopnic][i-1], i, "/ingame/lines_gopnic.txt");
 
-	Localize(selecthint, 1, "\\menu.txt");
-	Localize(backhint, 2, "\\menu.txt");
-	Localize(navigatehint, 3, "\\menu.txt");
+	Localize(selecthint, 1, "/menu.txt");
+	Localize(backhint, 2, "/menu.txt");
+	Localize(navigatehint, 3, "/menu.txt");
 
-	Localize(SavingLabel, 21, "\\menu.txt");
-	Localize(SavingDoneLabel, 22, "\\menu.txt");
-	Localize(SavingFailedLabel, 23, "\\menu.txt");
-	Localize(LoadingLabel, 24, "\\menu.txt");
+	Localize(SavingLabel, 21, "/menu.txt");
+	Localize(SavingDoneLabel, 22, "/menu.txt");
+	Localize(SavingFailedLabel, 23, "/menu.txt");
+	Localize(LoadingLabel, 24, "/menu.txt");
 
-	Localize(NextButton, 2, "\\ingame.txt");
-	Localize(SkipButton, 3, "\\ingame.txt");
+	Localize(NextButton, 2, "/ingame.txt");
+	Localize(SkipButton, 3, "/ingame.txt");
 
-	Localize(HoldLabel, 6, "\\ingame.txt");
-	Localize(RapidlyPressLabel, 7, "\\ingame.txt");
+	Localize(HoldLabel, 6, "/ingame.txt");
+	Localize(RapidlyPressLabel, 7, "/ingame.txt");
 
 	for(i = 1; i < 32; i++)
-		Localize(LocationName[i-1], i, "\\locationnames.txt");//Location names
+		Localize(LocationName[i-1], i, "/locationnames.txt");//Location names
 }
 void main()
 {
@@ -1800,8 +1810,8 @@ void main()
 	cout << ". . .";
 	GlobalLocalize();
 	//Localize constant data's in game: weapons/items names and descriptions
-	Startup();//Disclaimer and (c) Bluscreendez logo
-	while(1){//Main loop
+	Startup(); //Disclaimer and (c) Bluscreendez logo
+	while(1){ //Main loop
 		menu();
 		game();
 	}

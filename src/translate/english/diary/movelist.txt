@@ -1,0 +1,47 @@
+-----BASIC CONTROLS-------
+//LOCK-ON
+Focus and aim at the one person
+//PUNCH
+Quick melee attack
+//WEAPON ATTACK
+Use advantages of your weapon
+//DODGE
+Evade incoming attacks. Drains stamina
+Lvl 2: Dodge again to roll to even further distance.
+//TAUNT
+-------OFFENSIVE MOVES-------
+//PUNCH COMBO
+Light attack, slowly drains stamina.
+//HEAVY STRIKE
+Slow and powerful attack. Can break blocks.
+//GRAB
+While bare handed, you can grab an enemy.
+//STUN PUNCH
+Stuns an enemy for a few seconds.
+//Overthrow
+
+-------DEFENSIVE MOVES-------
+//DODGE
+Evade incoming attacks. Requires stamina and drains it.
+Lvl 2: Dodge again to roll to even further distance.
+//BLOCK
+Defensive move. Requires stamina and drains it afer each attack.
+//GRAB ESCAPE
+Move left and right rapidly to escape
+Lvl 2: Grab enemy's hand and then punch it to escape faster
+//DISARM
+
+//
+--------STICK MOVES---------
+//CUTTING COMBO
+
+//HIT BACK
+
+//THRUST
+
+---------BAT MOVES---------
+//SWINGS
+
+//ROUNDHOUSE BACK
+
+//ROUNDHOUSE FRONT

@@ -1,0 +1,5 @@
+Inventory
+Diary
+Load game
+Settings
+Quit game

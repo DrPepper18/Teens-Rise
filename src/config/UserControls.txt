@@ -1,0 +1,36 @@
+KEYBOARD 
+W 	= Up
+S 	= Down
+A 	= Left
+D 	= Right
+Shift 	= Run
+C 	= Crawl
+LMB 	= Shoot
+Space 	= Lock-On
+Mouse 	= Aim
+F 	= Punch
+Z 	= Compliment
+X 	= Taunt
+E 	= Action
+Q	= Prepared item
+1 	= Melee weapon
+2 	= Medium-ranged weapon 1
+3 	= Medium-ranged weapon 2
+4 	= Thrown weapon
+5 	= Extra weapon
+
+XBOX CONTROLLER
+LS 		= Move
+RS 		= Aim
+ClickLS 	= Run
+A 		= Crawl
+X 		= Punch
+Y 		= Action
+LT 		= Lock-On
+RT 		= Shoot
+Up 		= Weapon 1
+Left 		= Weapon 2
+Right 		= Weapon 3
+Down 		= Weapon 4
+RB 		= Prepared item
+LB 		= Weapon selector

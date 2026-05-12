@@ -8,7 +8,7 @@ const char *missionname;
 char objective[128];
 const char *failreason;
 int obj;
-int script[8] = {1,0,1,};//Mainscript, extra, cutscene script
+int script[8] = {1,0,1,}; //Mainscript, extra, cutscene script
 char captions[128];
 char NextButton[128];
 char SkipButton[128];
@@ -115,9 +115,9 @@ void Intro()
 	hr = 9, mn = 0;
 	ifstream file;
 	if(strcmp(language, "english") == 0)
-		file.open("C:\\Program Files\\Teen's rise\\game\\translate\\english\\story\\intro.txt");
+		file.open("translate/english/story/intro.txt");
 	else if(strcmp(language, "russian") == 0)
-		file.open("C:\\Program Files\\Teen's rise\\game\\translate\\russian\\story\\intro.txt");
+		file.open("translate/russian/story/intro.txt");
 
 	for(int i = 0; i < 6; i++){
 		file.getline(captions, 128);
@@ -129,7 +129,7 @@ void Intro()
 void Ending()
 {
 	int i;
-	ifstream file("C:\\Program Files\\Teen's rise\\game\\translate\\english\\story\\m_1.txt");
+	ifstream file("translate/english/story/m_1.txt");
 	for(i = 0; !file.eof(); i++){
 		file.getline(captions, 128);
 		Caption(captions);
@@ -159,20 +159,20 @@ void TotalResults()
 void m_1newworld()
 {
 	if(script[mainscript] == 1){
-		Localize(captions, script[cutscene], "\\story\\m_1.txt");
+		Localize(captions, script[cutscene], "/story/m_1.txt");
 		Caption(captions);
 		if(script[cutscene] == 2){
 			script[cutscene] = 1, script[mainscript]++;}
 		script[cutscene]++;
 	}
 	else if(script[mainscript] == 2){
-		Localize(captions, 3, "\\story\\m_1.txt");
+		Localize(captions, 3, "/story/m_1.txt");
 		Caption(captions);
-		//Localize(objective, 4, "\\story\\m_1.txt");
+		//Localize(objective, 4, "/story/m_1.txt");
 		script[0]++;
 	}
 	else if(script[mainscript] == 3 && location != safehouse1){
-		Localize(captions, 5, "\\story\\m_1.txt");
+		Localize(captions, 5, "/story/m_1.txt");
 		Caption(captions);
 		script[0]++;
 	}
@@ -185,7 +185,7 @@ void m_1newworld()
 			script[0]++;
 	}
 	else if(script[0] == 5){
-		Localize(captions, 4+script[cutscene], "\\story\\m_1.txt");
+		Localize(captions, 4+script[cutscene], "/story/m_1.txt");
 		Caption(captions);
 		script[cutscene]++;
 		if(script[cutscene] == 17)
@@ -214,7 +214,7 @@ void m_1newworld()
 			else	script[cutscene]--;//Punk goes to Alex
 		}
 		else{
-			Localize(captions, 21+script[cutscene], "\\story\\m_1.txt");
+			Localize(captions, 21+script[cutscene], "/story/m_1.txt");
 			Caption(captions);
 		}
 		script[cutscene]++;
@@ -235,7 +235,7 @@ void m_1newworld()
 			LoadNPC(3, 16, 25, fraction_gopnic, angry, 0, iSeeds, 5, 5);
 			LoadNPC(4, 18, 25, fraction_gopnic, angry, 0, iSeeds, 5, 5);
 		}
-		Localize(captions, 40+script[cutscene], "\\story\\m_1.txt");
+		Localize(captions, 40+script[cutscene], "/story/m_1.txt");
 		Caption(captions);
 		script[cutscene]++;
 		if(script[cutscene] == 7)
@@ -248,14 +248,14 @@ void m_1newworld()
 	}
 	else if(script[mainscript] == 10)
 	{
-		Localize(captions, 50+script[cutscene], "\\story\\m_1.txt");
+		Localize(captions, 50+script[cutscene], "/story/m_1.txt");
 		Caption(captions);
 		script[cutscene]++;
 		if(script[cutscene] == 6)
 			script[cutscene] = 1, script[mainscript]++;
 	}
 	else if(script[0] == 11){
-		Localize(captions, 56+script[cutscene], "\\story\\m_1.txt");
+		Localize(captions, 56+script[cutscene], "/story/m_1.txt");
 		if(script[cutscene] == 1){
 			cameratype = point, cameracenter[camposY] = 12, cameracenter[camposX] = 15;
 			Caption(captions);
@@ -273,7 +273,7 @@ void m_1newworld()
 	}
 	else if(script[0] == 12){
 		y = 8, x = 15;
-		Localize(captions, 63+script[cutscene], "\\story\\m_1.txt");
+		Localize(captions, 63+script[cutscene], "/story/m_1.txt");
 		Caption(captions);
 		script[cutscene]++;
 		if(script[cutscene] == 6)
@@ -288,7 +288,7 @@ void m_1newworld()
 void m_2finding()
 {
 	if(script[0] == 1){
-		Localize(captions, script[cutscene], "\\story\\m_2.txt");
+		Localize(captions, script[cutscene], "/story/m_2.txt");
 		Caption(captions);
 		script[cutscene]++;
 		if(script[cutscene] == 5)
@@ -299,14 +299,14 @@ void m_2finding()
 			script[0]++;
 	}
 	else if(script[0] == 3){
-		Localize(captions, script[cutscene], "\\story\\m_2.txt");
+		Localize(captions, script[cutscene], "/story/m_2.txt");
 		script[cutscene]++;
 		if(script[cutscene] == 9)
 			script[cutscene] = 1, script[0]++;
 			//objective = "����� �� ���";
 	}
 	else if(script[0] == 4 && location == parkstreet){
-		//Localize("\\story\\m_2.txt");
+		//Localize("/story/m_2.txt");
 		Caption("");
 		script[cutscene]++;
 		if(script[cutscene] == 3)
@@ -325,7 +325,7 @@ void m_3bottleshooter()
 {
 	if(script[0] == 1)
 	{
-		Localize(captions, script[cutscene], "\\story\\m_3.txt");
+		Localize(captions, script[cutscene], "/story/m_3.txt");
 		Caption(captions);
 		if(script[cutscene] == 1)
 			script[0]++;
@@ -336,23 +336,23 @@ void m_3bottleshooter()
 			weapon[ranged1] = iRubberGun;
 		}
 		else if(script[1] == 2){
-			Localize(captions, 2, "\\story\\m_3.txt");
+			Localize(captions, 2, "/story/m_3.txt");
 			Caption(captions);
 			if(weaponslot == ranged1)
 				script[1]++;
 		}
 		else if(script[1] == 3){
-			Localize(captions, 3, "\\story\\m_3.txt");
+			Localize(captions, 3, "/story/m_3.txt");
 			Caption(captions);
 			script[1]++;
 		}
 		else if(script[1] == 4){
-			Localize(captions, 4, "\\story\\m_3.txt");
+			Localize(captions, 4, "/story/m_3.txt");
 			Caption(captions);
 			script[1]++;
 		}
 		else if(script[1] == 5){
-			Localize(captions, 5, "\\story\\m_3.txt");
+			Localize(captions, 5, "/story/m_3.txt");
 			Caption(captions);
 			script[1]++;
 		}
@@ -374,12 +374,12 @@ void m_3bottleshooter()
 }
 void m_4nightbrawl()
 {
-	if(hr > 22 || hr < 05){
-		Caption("Come back later");
+	if(hr < 22 || hr > 05){
+		Caption("Come back later at 22:00-05:00");
 		mission = 0;
 	}
 	if(script[0] == 1){
-		Localize(captions, script[cutscene], "\\story\\m_5.txt");
+		Localize(captions, script[cutscene], "/story/m_5.txt");
 		Caption(captions);
 		script[0]++;
 	}
@@ -399,7 +399,7 @@ void m_4nightbrawl()
 			script[0]++;
 	}
 	else if(script[0] == 5){
-		Localize(captions, script[cutscene], "\\story\\m_5.txt");
+		Localize(captions, script[cutscene], "/story/m_5.txt");
 		Caption(captions);
 		script[0]++;
 	}
@@ -415,7 +415,7 @@ void m_cuttingarms()
 	if(script[0] == 1)
 	{
 		
-		Localize(captions, script[cutscene], "\\story\\m_6.txt");
+		Localize(captions, script[cutscene], "/story/m_6.txt");
 		Caption(captions);
 		script[cutscene]++;
 	}
@@ -475,7 +475,7 @@ void m_batduel()
 	}
 	if(script[0] == 3)
 	{
-		Localize(captions, script[cutscene], "\\story\\m_2.txt");
+		Localize(captions, script[cutscene], "/story/m_2.txt");
 		Caption(captions);
 		script[cutscene]++;
 	}
@@ -501,7 +501,7 @@ void m_blindkaraoke()
 {
 	if(script[0] == 1)
 	{
-		Localize(captions, script[cutscene], "\\story\\m_2.txt");
+		Localize(captions, script[cutscene], "/story/m_2.txt");
 		Caption(captions);
 	}
 	else if(script[0] == 2)
@@ -555,7 +555,7 @@ void m_spit()
 			if(money >= 500)
 				money -= 200;
 		}
-		Localize(captions, script[cutscene], "\\story\\m_20.txt");
+		Localize(captions, script[cutscene], "/story/m_20.txt");
 		Caption(captions);
 		script[cutscene]++;
 	}

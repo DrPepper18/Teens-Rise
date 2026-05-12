@@ -28,9 +28,9 @@ char *quote;
 void GameOverScreen()
 {
 	char FailDefault[128], CheckpointTitle[128], CancelMissionTitle[128];
-	Localize(FailDefault, 16, "\\ingame.txt");
-	Localize(CheckpointTitle, 17, "\\ingame.txt");
-	Localize(CancelMissionTitle, 18, "\\ingame.txt");
+	Localize(FailDefault, 16, "/ingame.txt");
+	Localize(CheckpointTitle, 17, "/ingame.txt");
+	Localize(CancelMissionTitle, 18, "/ingame.txt");
 	if(failreason == 0)
 		failreason = FailDefault;
 	while(1)

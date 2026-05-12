@@ -1,0 +1,67 @@
+select
+back
+navigate
+
+//MAIN MENU
+Bluscreendez presents...
+Load game
+New game
+Settings
+Quit game
+Game features autosave. 
+Previous autosave data will be lost.
+Continue?
+
+//DATA SCREEN
+SAVE GAME
+LOAD GAME
+(Autosave)
+Date:
+Total:
+<Saving...
+done>
+failed>
+<Loading...>
+<Error - file wasn't found>
+
+//SETTINGS
+Video
+Audio
+Game
+Controls
+Graphics settings
+Sound settings
+Gameplay settings
+Controls settings
+//VIDEO SETTINGS
+Frame delay
+Font
+Font size
+Language:
+//AUDIO SETTINGS
+Sound
+On
+Off
+//GAME SETTINGS
+
+//CONTROLS SETTINGS
+Movement
+Input Device
+Keyboard+mouse
+Controller
+Controller
+Restore
+//CONTROLS
+Sprint
+Crawl
+Action
+Punch
+LockOn
+Weapon
+Slot 1
+Slot 2
+Slot 3
+Slot 4
+Item
+Press any key...
+There is a conflict

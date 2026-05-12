@@ -63,8 +63,7 @@ enum filedata
 //Progress
 int mission = 0, m_cleared = 0;
 int completes = 0;
-//File Manage
-char gamepath[128] = "C:\\Program Files\\Teen's rise\\";
+//File Management
 char *language = "english";
 //Time
 bool day = false;
@@ -585,7 +584,7 @@ void Color(int a, int b) {
 char *Localize(char *text, int row, char *filename)
 {
 	ifstream file;
-	char filepath[128] = "C:\\Program Files\\Teen's rise\\game\\translate\\";
+	char filepath[128] = "translate/";
 	strcat_s(filepath, language);
 	strcat_s(filepath, filename);
 	file.open(filepath);
@@ -671,9 +670,9 @@ void LoadData(int slot)
 	Localize(ErrorText, 25, "\\menu.txt");
 	char buffer[100];
 	ifstream file;
-	if(slot == 0)	file.open("C:\\Program Files\\Teen's rise\\game\\saves\\autosave.txt");
-	if(slot == 1)	file.open("C:\\Program Files\\Teen's rise\\game\\saves\\savedata1.txt");
-	if(slot == 2)	file.open("C:\\Program Files\\Teen's rise\\game\\saves\\savedata2.txt");
+	if(slot == 0)	file.open("saves/autosave.txt");
+	if(slot == 1)	file.open("saves/savedata1.txt");
+	if(slot == 2)	file.open("saves/savedata2.txt");
 
 	if(!file.is_open())
 		cout << ErrorText << " ([Enter] - OK)";
@@ -717,9 +716,9 @@ void SaveData(int slot)
 	struct tm aTm;
 	localtime_s(&aTm, &timer);
 	ofstream file;
-	if(slot == 0)	file.open("C:\\Program Files\\Teen's rise\\game\\saves\\autosave.txt");
-	if(slot == 1)	file.open("C:\\Program Files\\Teen's rise\\game\\saves\\savedata1.txt");
-	if(slot == 2)	file.open("C:\\Program Files\\Teen's rise\\game\\saves\\savedata2.txt");
+	if(slot == 0)	file.open("saves/autosave.txt");
+	if(slot == 1)	file.open("saves/savedata1.txt");
+	if(slot == 2)	file.open("saves/savedata2.txt");
 
 	if(!file.is_open())
 		cout << ErrorText << " ([Enter] - OK)";
@@ -829,7 +828,7 @@ void LoadObject(int i, int item_id, int coordY, int coordX)
 void LoadMap()
 {
 	ifstream file;
-	std::string path = "C://Program Files//Teen's rise//game//maps//";
+	std::string path = "maps/";
 	if(location == safehouse1)
 		file.open(path+"Safehouse1.txt");
 	else if(location == foreststreet)

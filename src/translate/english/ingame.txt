@@ -1,0 +1,18 @@
+//Dialogues
+Next
+Skip
+
+//Buttons
+(hold)
+(rapidly)
+
+//Hints
+action
+escape
+revive ally
+get up
+
+//Game over
+You've screwed up
+last checkpoint
+cancel mission

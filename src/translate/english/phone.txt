@@ -1,0 +1,16 @@
+Search
+Messages
+Music
+Weather
+Map
+//Message App
+Sender
+Text
+//Music App
+Name
+Author
+//Weather App
+Clear
+Rain
+Snow
+//Map App
