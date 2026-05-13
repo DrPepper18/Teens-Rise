@@ -214,176 +214,23 @@ Item item[32] = {
 	{0},
 };
 
+//0 - number
+//1 - text symbol
+//2 - background color
+//3 - secondary color
+//4 - obstacle or not
 int objectmodel[160][5] = {
-	//0 - number
-	//1 - text symbol
-	//2 - background color
-	//3 - secondary color
-	//4 - obstacle or not
-//Landscape Texture
-{0, ' ', 0, 0},			//Hole
-{1, ',', 2, 10},		//Grass                                 
-{2, '.', 14, 14},		//Sand
-{3, '*', 15, 9},		//Snow
-{4, '~', 9, 11},		//Water
-{5, '#', 7, 7},			//Road
-{6, '/', 6, 6},			//Floor
-{7, 'x', 6, 2},			//Carpet
-//Default
-//Enviroment
-{8, 'w', 2, 10},		//Bush
-{9, 'Y', 6, 4},			//Tree
-{10, '/', 3, 6},		//Branch
-//Urban
-{11, 'U', 15, 1},		//Bed
-{12, '#', 8, 0, 1},		//Stone wall
-{13, '#', 4, 0, 1},		//Brick wall
-{14, 'I', 7, 8, 1},		//Fence
-//Interact
-{15, '#', 11, 11, 1},	//Glass
-{16, '#', 7, 11, 1},	//Broken glass
-{17, '{', 3, 15, 1},	//Dumpster
-{18, 'x', 8, 0, 1},		//Item box
-{19, '=', 7, 8, 1},		//Door locked hor
-{20, ';', 7, 8, 1},		//Door locked ver
-{21, '-', 7, 8},		//Door hor
-{22, '|', 7, 8},		//Door ver
-{23, '~', 16, 13},		//Rubber
-{24, '$', 16, 10},		//Money
-//Characters
-{25, 'A', 0, 15},		//A
-{26, 'B', 0, 15},		//B
-{27, 'C', 0, 15},		//C
-{28, 'D', 0, 15},		//D
-{29, 'E', 0, 15},		//E
-{30, 'F', 0, 15},		//F
-{31, 'G', 0, 15},		//G
-{32, 'H', 0, 15},		//H
-{33, 'I', 0, 15},		//I
-{34, 'J', 0, 15},		//J
-{35, 'K', 0, 15},		//K
-{36, 'L', 0, 15},		//L
-{37, 'M', 0, 15},		//M
-{38, 'N', 0, 15},		//N
-{39, 'O', 0, 15},		//O
-{40, 'P', 0, 15},		//P
-{41, 'Q', 0, 15},   
-{42, 'R', 0, 15},
-{43, 'S', 0, 15},
-{44, 'T', 0, 15},
-{45, 'U', 0, 15},
-{46, 'V', 0, 15},
-{47, 'X', 0, 15},  
-{48, 'Y', 0, 15},
-{49, 'Z', 0, 15},
-{50, '0', 0, 15},
-{51, '1', 0, 15},
-{52, '2', 0, 15}, 
-{53, '3', 0, 15},
-{54, '4', 0, 15}, 
-{55, '5', 0, 15},
-{56, '6', 0, 15},
-{57, '7', 0, 15},
-{58, '8', 0, 15},
-{59, '9', 0, 15}, 
-{60, '+', 0, 15},
-{61, '-', 0, 15},
-//Post-Effects
-{62, '~', 16, 8},		//Smoke
-{63, '*', 16, 9},		//Water
-{64, '*', 16, 4},		//Soda
-{65, '*', 16, 12},		//Pepper cloud,
-{66, '\'', 16, 14},		//Leaf
-{67, '.', 16, 15},		//Snowflake
-//Default blocks
-{68, ' ', 0, 0, 1},	//Black
-{69, ' ', 1, 0, 1},
-{70, ' ', 2, 0, 1},
-{71, ' ', 3, 0, 1},
-{72, ' ', 4, 0, 1},
-{73, ' ', 5, 0, 1},
-{74, ' ', 6, 0, 1},
-{75, ' ', 7, 0, 1},
-{76, ' ', 8, 0, 1},
-{77, ' ', 9, 0, 1},
-{78, ' ', 10,0, 1},
-{79, ' ', 11,0, 1},
-{80, ' ', 12,0, 1},
-{81, ' ', 13,0, 1},
-{82, ' ', 14,0, 1},
-{83, ' ', 15,0, 1},
-{84, ' ', 0, 0, 0},	//Black
-{85, ' ', 1, 0, 0},
-{86, ' ', 2, 0, 0},
-{87, ' ', 3, 0, 0},
-{88, ' ', 4, 0, 0},
-{89, ' ', 5, 0, 0},
-{90, ' ', 6, 0, 0},
-{91, ' ', 7, 0, 0},
-{92, ' ', 8, 0, 0},
-{93, ' ', 9, 0, 0},
-{94, ' ', 10,0, 0},
-{95, ' ', 11,0, 0},
-{96, ' ', 12,0, 0},
-{97, ' ', 13,0, 0},
-{98, ' ', 14,0, 0},
-{99, ' ', 15,0, 0},
-{100, 'x', 0,12, 1},//Map limit
-//Characters
-{101, '0', 16, 15},	//Player
-{102, '0', 16, 10},	//Geek
-{103, '0', 16, 0},	//Doomer
-{104, '0', 16, 5},	//Zoomer
-{105, '0', 16, 6, 1},//Gopnic
-{106, '0', 16, 9},	//Biker
-{107, '0', 16, 1, 1},//Cop
-{108, '_', 16, 15},	//Laying player
-{109, '_', 16, 10},	//Laying geek
-{110, '_', 16, 0},	//Laying doomer
-{111, '_', 16, 5},	//Laying zoomer
-{112, '_', 16, 6},	//Laying gopnic
-{113, '_', 16, 9},	//Laying cop
-//Weapons
-{114, '-', 16, 15},	//Fist left
-{115, '\\', 16, 4},	//Stick
-{116, '!', 16, 6},	//Bat
-{117, 'q', 16, 3},	//Bottle
-{118, 'y', 16, 4},	//Slingshot
-{119, '-', 16, 4},	//Rubber gun
-{120, '-', 16, 14},	//Water gun
-{121, '=', 16, 3},	//Bottle gun
-{122, },//Pistol gun
-{123, 'i', 16, 12},	//Cola bomb
-{124, '*', 16, 3},	//Dirty bottle
-{125, 'i', 16, 12},	//Fire Cracker
-{126, 3, 16, 5},	//Paint spray
-{127, 3, 16, 0},	//Pepper spray
-//Inventory
-{128, '#', 16, 14},	//Instant noodles
-{129, '=', 16, 6},	//Burger
-{130, 'i', 16, 2},	//Soda
-{131, 'n', 16, 12},	//Energy drink
-{132, 'U', 16, 15},	//Shaurma
-{133, '@', 16, 13},	//Candies
-{134, '#', 16, 4},	//Chocolate
-{135, 'Y', 16, 10},	//Flowers
-{136, '\'', 12, 0},	//Seeds
-{137, '@', 16, 1},	//Bag
-//Weapons right texture
-{138, '-', 16, 15},	//Fist right
-{139, '/', 16, 4},	//Stick right
-{140, '!', 16, 6},
-{141, 'p', 16, 3},
-{142, 'y', 16, 4},
-{143, '-', 16, 4},
-{144, '-', 16, 14},
-{145, '=', 16, 3},
-{146, },
-{147, 'i', 16, 12},
-{148, '*', 16, 3},
-{149, 'i', 16, 12},
-{150, 3, 16, 5},
-{151, 3, 16, 0},
+	//Landscape Texture 1-7
+	//Enviroment 8-10
+	//Urban 11-14
+	//Interact 15-24
+	//Letters 25-62
+	//Post-Effects 62-67
+	//Default blocks & Map Limit 68-100
+	//Characters 101-113
+	//Weapons 114-127
+	//Inventory 128-137
+	//Weapons right texture 138-151
 };
 
 enum weathertype {
@@ -667,7 +514,7 @@ char *KeyName(int vKey)
 void LoadData(int slot)
 {
 	char ErrorText[128];
-	Localize(ErrorText, 25, "\\menu.txt");
+	Localize(ErrorText, 25, "/menu.txt");
 	char buffer[100];
 	ifstream file;
 	if(slot == 0)	file.open("saves/autosave.txt");
@@ -710,15 +557,18 @@ void SaveData(int slot)
 {
 	system("cls");
 	char ErrorText[128];
-	Localize(ErrorText, 25, "\\menu.txt");
+	Localize(ErrorText, 25, "/menu.txt");
 	//Preparing save data
 	time_t timer = time(NULL);
 	struct tm aTm;
 	localtime_s(&aTm, &timer);
 	ofstream file;
-	if(slot == 0)	file.open("saves/autosave.txt");
-	if(slot == 1)	file.open("saves/savedata1.txt");
-	if(slot == 2)	file.open("saves/savedata2.txt");
+	if(slot == 0)	
+		file.open("saves/autosave.txt");
+	if(slot == 1)
+		file.open("saves/savedata1.txt");
+	if(slot == 2)
+		file.open("saves/savedata2.txt");
 
 	if(!file.is_open())
 		cout << ErrorText << " ([Enter] - OK)";

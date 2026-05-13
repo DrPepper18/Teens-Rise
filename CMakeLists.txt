@@ -25,6 +25,15 @@ add_custom_command(TARGET TeensRise POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
             "${DATA_DIR}/saves"
             "${OUT_DIR}/saves"
+    COMMAND ${CMAKE_COMMAND} -E copy
+            "${DATA_DIR}/tileset.txt"
+            "${OUT_DIR}/tileset.txt"
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+            "${DATA_DIR}/lightning"
+            "${OUT_DIR}/lightning"
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+            "${DATA_DIR}/items"
+            "${OUT_DIR}/items"
 )
 
 if(MSVC)

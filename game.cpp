@@ -3,17 +3,17 @@
 *                                                   *
 *Minimal requirments:                               *
 *CPU: ~180 MHz                                      *
-*RAM: ~640 Kb                                       *
+*RAM: ~1 Mb                                         *
 *Recommended requirements:                          *
 *CPU: ~240 MHz                                      *
-*RAM: ~720 Kb                                       *
-*Disc space: ~214 Kb                                *
+*RAM: ~2 Mb                                         *
+*Disc space: ~64 Mb                                  *
 *                                                   *
 *NOTICE: Excluding conhost.exe requirments          *
 *****************************************************/
 
 
-#include <iostream>//System libraries
+#include <iostream> //System libraries
 #include <conio.h>
 #include <Windows.h>
 #include <fstream>
@@ -23,7 +23,7 @@
 #include <time.h>
 #include <MMSystem.h> 
 
-#include "graphics.h"//Engine fragments
+#include "graphics.h" //Engine fragments
 #include "audio.h"
 #include "GameMechanics.h"
 #include "ai.h"
@@ -196,15 +196,19 @@ void ControlsSettings()
 				pointer++;
 			else if(GetAsyncKeyState('Q'))
 			{
-				if(KeyboardType == 0)	KeyboardType = 1;
-				else					KeyboardType--;
+				if(KeyboardType == 0)
+					KeyboardType = 1;
+				else
+					KeyboardType--;
 				for(i = 0; i < 16; i++)
 					Keyboard[i] = KeyboardControlsType[KeyboardType][i];
 			}
 			else if(GetAsyncKeyState('E'))
 			{
-				if(KeyboardType == 1)	KeyboardType = 0;
-				else					KeyboardType++;
+				if(KeyboardType == 1)
+					KeyboardType = 0;
+				else
+					KeyboardType++;
 				for(i = 0; i < 16; i++)
 					Keyboard[i] = KeyboardControlsType[KeyboardType][i];
 			}
@@ -290,77 +294,41 @@ void Settings()
 				i, 2, 16, 0, 15);
 		if(settingof == none)
 		{
-			TextOutput(UI, 
-					VideoButton, 
-					2,2, 16,0, 15);
-			TextOutput(UI, 
-					AudioButton, 
-					3,2, 16,0, 15);
-			TextOutput(UI, 
-					GameButton, 
-					4,2, 16,0, 15);
-			TextOutput(UI, 
-					ControlsButton, 
-					5,2, 16,0, 15);
+			TextOutput(UI, VideoButton, 2,2, 16,0, 15);
+			TextOutput(UI, AudioButton, 3,2, 16,0, 15);
+			TextOutput(UI, GameButton, 4,2, 16,0, 15);
+			TextOutput(UI, ControlsButton, 5,2, 16,0, 15);
 			switch(pointer)
 			{
 			case video:
-				TextOutput(UI, 
-					VideoInfoLabel, 
-					2,19, 16,0, 16);
+				TextOutput(UI, VideoInfoLabel, 2,19, 16,0, 16);
 				break;
 			case audio:
-				TextOutput(UI, 
-					AudioInfoLabel, 
-					2,19, 16,0, 16);
+				TextOutput(UI, AudioInfoLabel, 2,19, 16,0, 16);
 				break;
 			case game:
-				TextOutput(UI, 
-					GameInfoLabel, 
-					2,19, 16,0, 16);
+				TextOutput(UI, GameInfoLabel, 2,19, 16,0, 16);
 				break;
 			case controls:
-				TextOutput(UI, 
-					ControlsInfoLabel, 
-					2,19, 16,0, 16);
+				TextOutput(UI, ControlsInfoLabel, 2,19, 16,0, 16);
 				break;
 			}
 		}
 		else if(settingof == video)
 		{
-			TextOutput(UI, 
-					FrameDelayButton, 
-					2,2, 16,0, 15);
-			TextOutput(UI, 
-					"10 ms", 
-					2,20, 16,0, 15);
-			TextOutput(UI, 
-					FontButton, 
-					3,2, 16,0, 15);
-			TextOutput(UI, 
-					"Pixel", 
-					3,20, 16,0, 15);
-			TextOutput(UI, 
-					FontSizeButton, 
-					4,2, 16,0, 15);
-			TextOutput(UI, 
-					"12x16", 
-					4,20, 16,0, 15);
-			TextOutput(UI, 
-					LanguageButton, 
-					5,2, 16,0, 15);
-			TextOutput(UI, 
-					"Russian", 
-					5,20, 16,0, 15);
+			TextOutput(UI, FrameDelayButton, 2,2, 16,0, 15);
+			TextOutput(UI, "10 ms", 2,20, 16,0, 15);
+			TextOutput(UI, FontButton, 3,2, 16,0, 15);
+			TextOutput(UI, "Pixel", 3,20, 16,0, 15);
+			TextOutput(UI, FontSizeButton, 4,2, 16,0, 15);
+			TextOutput(UI, "12x16", 4,20, 16,0, 15);
+			TextOutput(UI, LanguageButton, 5,2, 16,0, 15);
+			TextOutput(UI, "Russian", 5,20, 16,0, 15);
 		}
 		else if(settingof == audio)
 		{
-			TextOutput(UI, 
-					"Sound", 
-					2,2, 16,0, 15);
-			TextOutput(UI, 
-					"On", 
-					2,20, 16,0, 15);
+			TextOutput(UI, "Sound", 2,2, 16,0, 15);
+			TextOutput(UI, "On", 2,20, 16,0, 15);
 		}
 		else if(settingof == game)
 		{
@@ -368,35 +336,19 @@ void Settings()
 		}
 		else if(settingof == controls)
 		{
-			TextOutput(UI, 
-					"Movement:", 
-					2,2, 16,0, 15);
-			TextOutput(UI, 
-					"Input device:", 
-					3,2, 16,0, 15);
-			TextOutput(UI, 
-					"[Controls]", 
-					4,2, 16,0, 15);
-			TextOutput(UI, 
-					"[DEFAULT]", 
-					5,2, 16,0, 15);
-			TextOutput(UI, 
-					"[W][S][A][D]", 
-					2,20, 16,0, 15);
+			TextOutput(UI, "Movement:", 2,2, 16,0, 15);
+			TextOutput(UI, "Input device:", 3,2, 16,0, 15);
+			TextOutput(UI, "[Controls]", 4,2, 16,0, 15);
+			TextOutput(UI, "[DEFAULT]", 5,2, 16,0, 15);
+			TextOutput(UI, "[W][S][A][D]", 2,20, 16,0, 15);
 			if(InputDevice == keyboard){
-				TextOutput(UI, 
-					"Keyboard+mouse", 
-					3,20, 16,0, 15);
+				TextOutput(UI, "Keyboard+mouse", 3,20, 16,0, 15);
 			}
 			else if(InputDevice == Xbox_gamepad){
-				TextOutput(UI, 
-					"XINPUT gamepad", 
-					3,20, 16,0, 15);
+				TextOutput(UI, "XINPUT gamepad", 3,20, 16,0, 15);
 			}
 			else if(InputDevice == DualShock){
-				TextOutput(UI, 
-					"Dualshock", 
-					3,20, 16,0, 15);
+				TextOutput(UI, "Dualshock", 3,20, 16,0, 15);
 			}
 			
 		}
@@ -830,7 +782,7 @@ void InventoryScreen()
 		delete Stamina;
 	}
 }
-void DataScreen(int option)//0 is for saving; 1 is for loading
+void DataScreen(int option) //0 is for saving; 1 is for loading
 {
 	char SaveLoadTitle[128];
 	char AutosaveLabel[128];
@@ -1326,6 +1278,32 @@ void LoadLightSource(int i, int power, int Y, int X, int R)
 	lightsource[i][2] = X,
 	lightsource[i][3] = R;
 }
+void LoadTileset() {
+	ifstream file("tileset.txt");
+	int idx = 0;
+	char buffer[64];
+	while (!file.eof()) {
+		file.getline(buffer, 64, '\n');
+		int i = 0;
+		int bgcolor = 0, frcolor = 0;
+		objectmodel[idx][0] = idx;
+		objectmodel[idx][1] = buffer[0];
+		for(i = i+2; buffer[i] != ','; i++){
+			bgcolor = bgcolor * 10 + (buffer[i] - '0');
+		}
+		objectmodel[idx][2] = bgcolor;
+		for(i = i+1; buffer[i] != ','; i++){
+			frcolor = frcolor * 10 + (buffer[i] - '0');
+		}
+		objectmodel[idx][3] = frcolor;
+		objectmodel[idx][4] = (buffer[i+1] - '0');
+		Color(objectmodel[idx][2], objectmodel[idx][3]);
+		cout << char(objectmodel[idx][1]);
+		idx++;
+	}
+	Color(0,15);
+	file.close();
+}
 void LightPrep()
 {
 	if(hr >= 20 || hr <= 5)
@@ -1732,7 +1710,8 @@ void Startup()
 }
 void GlobalLocalize()
 {
-	int j, i;
+	//Localize constant data's in game: weapons/items names and descriptions
+	int j = 0, i = 0;
 	for(i = 0, j = 0; i < 42; i+=3, j++)
 		Localize(weaponID[j].name, 1+i, "/weapons_items.txt");
 	for(i = 0, j = 0; i < 75; i+=3, j++)
@@ -1807,9 +1786,11 @@ void main()
 		}
 	}
 	system("cls");
-	cout << ". . .";
+	cout << ". . ." << endl;
+
 	GlobalLocalize();
-	//Localize constant data's in game: weapons/items names and descriptions
+	LoadTileset();
+	
 	Startup(); //Disclaimer and (c) Bluscreendez logo
 	while(1){ //Main loop
 		menu();
