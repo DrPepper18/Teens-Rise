@@ -219,7 +219,7 @@ Item item[32] = {
 //2 - background color
 //3 - secondary color
 //4 - obstacle or not
-int objectmodel[160][5] = {
+short int objectmodel[160][5] = {
 	//Landscape Texture 1-7
 	//Enviroment 8-10
 	//Urban 11-14
@@ -412,8 +412,8 @@ enum locations
 	mountainbase,
 	mountaintop,
 };
-int loadedmap[256][256];
-int currentmap[256][256];
+short int loadedmap[256][256];
+short int currentmap[256][256];
 int MapSizeY = 256, MapSizeX = 256;
 char* subtitle;
 

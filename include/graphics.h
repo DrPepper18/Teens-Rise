@@ -14,7 +14,7 @@ using namespace std;
 int sizeX = 20, sizeY = 7;
 int HUDOnScreen = 1;
 int HintsOnScreen = 1;
-int framedelay = 10;
+int framedelay = 50;
 
 int colorback[64][64], colorfront[64][64];
 char screen[64][64];
@@ -270,7 +270,7 @@ void Hint()
 {/*
 	
 */}
-void Render(int map[256][256])
+void Render(short int map[256][256])
 {
 	int j, i, a, b;
 	screentop = cameracenter[camposY] - sizeY, screenbottom = cameracenter[camposY] + sizeY, 
@@ -307,53 +307,49 @@ void Render(int map[256][256])
 }
 void DrawFrame()
 {
-	COORD cursor;
-    cursor.X = 0, cursor.Y = 0;
-    SetConsoleCursorPosition(hConsole, cursor);
-	CONSOLE_CURSOR_INFO cursorinfo;
-	cursorinfo.bVisible = 0;
-	SetConsoleCursorInfo(hConsole, &cursorinfo);
-	int a, b;
-	for(a = 0; a < sizeY*2; a++)
-	{
-		Color(0,0);
-		cout << "\t\t\t";
-		for(b = 0; b < sizeX*2; b++){
-			Color(colorback[a][b], colorfront[a][b]);
-			cout << screen[a][b];
-			op++;
-		}
-		cout << endl;
-	}
-	Color(0, 15);
-	framemodulus = (framemodulus + 1) % 10;
+	const int SCREEN_WIDTH = sizeX * 2;
+	const int SCREEN_HEIGHT = sizeY * 2;
+	CHAR_INFO consoleBuffer[600];
+	for (int j = 0; j < SCREEN_HEIGHT; j++) {
+        for (int i = 0; i < SCREEN_WIDTH; i++) {
+            int index = j * SCREEN_WIDTH + i;
+            consoleBuffer[index].Char.AsciiChar = screen[j][i];
+            consoleBuffer[index].Attributes = (colorback[j][i] << 4) | colorfront[j][i];
+        }
+    }
+    COORD bufferSize = { (short)SCREEN_WIDTH, (short)SCREEN_HEIGHT };
+    COORD bufferCoord = { 0, 0 };
+    SMALL_RECT writeRegion = { 0, 0, (short)(SCREEN_WIDTH - 1), (short)(SCREEN_HEIGHT - 1) };
+    WriteConsoleOutput(hConsole, consoleBuffer, bufferSize, bufferCoord, &writeRegion);
+    framemodulus = (framemodulus + 1) % 10;
 }
 void DrawWindow(char UI[64][64])
 {
-    CONSOLE_CURSOR_INFO cursorinfo;
-	cursorinfo.bVisible = 0;
-	SetConsoleCursorInfo(hConsole, &cursorinfo);
-	Color(0,15);
-	for(int j = 0; j < 14; j++){
-		cout << "\t\t\t";
-		for(int i = 0; i < 37; i++){
-			Color(colorback[j][i], colorfront[j][i]);
-			cout << UI[j][i];
-		}
-		Color(0,15);
-		cout << endl;
-	}
+	const int SCREEN_WIDTH = 37;
+	const int SCREEN_HEIGHT = 14;
+	CHAR_INFO consoleBuffer[SCREEN_HEIGHT * SCREEN_WIDTH];
+	for (int j = 0; j < SCREEN_HEIGHT; j++) {
+        for (int i = 0; i < SCREEN_WIDTH; i++) {
+            int index = j * SCREEN_WIDTH + i;
+            consoleBuffer[index].Char.AsciiChar = UI[j][i];
+            consoleBuffer[index].Attributes = (colorback[j][i] << 4) | colorfront[j][i];
+        }
+    }
+	COORD bufferSize = { (short)SCREEN_WIDTH, (short)SCREEN_HEIGHT };
+    COORD bufferCoord = { 0, 0 };
+    SMALL_RECT writeRegion = { 0, 0, (short)(SCREEN_WIDTH - 1), (short)(SCREEN_HEIGHT - 1) };
+    WriteConsoleOutput(hConsole, consoleBuffer, bufferSize, bufferCoord, &writeRegion);
 }
-void Video(int map[256][256])
+void Video(short int map[256][256])
 {
 	CameraSetup();
 	Render(map);
 	DrawFrame();
-	if(HUDOnScreen == 1)
-		HUD();
-	if(GetAsyncKeyState(Keyboard[Aim]))
-		NPCBarOutput(1);
-	else
-		cout << "\t\t";
+	// if(HUDOnScreen == 1)
+	// 	HUD();
+	// if(GetAsyncKeyState(Keyboard[Aim]))
+	// 	NPCBarOutput(1);
+	// else
+	// 	cout << "\t\t";
 	Sleep(framedelay);
 }
