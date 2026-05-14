@@ -219,7 +219,7 @@ Item item[32] = {
 //2 - background color
 //3 - secondary color
 //4 - obstacle or not
-short int objectmodel[160][5] = {
+int objectmodel[160][5] = {
 	//Landscape Texture 1-7
 	//Enviroment 8-10
 	//Urban 11-14
@@ -412,8 +412,8 @@ enum locations
 	mountainbase,
 	mountaintop,
 };
-short int loadedmap[256][256];
-short int currentmap[256][256];
+int loadedmap[256][256];
+int currentmap[256][256];
 int MapSizeY = 256, MapSizeX = 256;
 char* subtitle;
 
@@ -424,6 +424,7 @@ int MouseX, MouseY;
 int SensivityY = 65, SensivityX = 42;
 int op = 0;
 int framemodulus = 0;
+char *caption = nullptr;
 
 void Color(int a, int b) {
 	SetConsoleTextAttribute(hConsole, (WORD) ((a << 4)| b));
@@ -779,7 +780,7 @@ void LocationSwitch()
 		else if(y > 51){
 			change = true;
 			location = park_front;
-			y = 7;
+			y = 8;
 		}
 		//npc_traffic = 5;
 	}

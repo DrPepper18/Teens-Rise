@@ -84,8 +84,8 @@ int missionstart[32][3] = {//location,y,x
 	{},
 	{},
 	{},//Final
-	{},};
-
+	{},
+};
 void Subtitle(char text[128], int timelimit)
 {
 	if(subtitletime < timelimit){
@@ -94,19 +94,6 @@ void Subtitle(char text[128], int timelimit)
 	}
 	else
 		subtitletime = 0;
-}
-void Caption(char text[128])
-{
-	//TextOutput(screen, colorback, colorfront, text, sizeY*2-3,3, 0,15, 32);
-	//subtitle = text;
-	cout << "\n\t\t" << text << endl;
-	cout << "\t\t(" << KeyName(Enter) << ". " << HoldLabel << " " << SkipButton << ")";
-	Sleep(200);
-	while(1){
-		if(GetAsyncKeyState(Enter) || GetAsyncKeyState(VK_LBUTTON))
-			break;
-	}
-	system("cls");
 }
 void Intro()
 {
@@ -121,7 +108,7 @@ void Intro()
 
 	for(int i = 0; i < 6; i++){
 		file.getline(captions, 128);
-		Caption(captions);
+		caption = captions;
 	}
 	file.close();
 	mission = 1;
@@ -132,7 +119,7 @@ void Ending()
 	ifstream file("translate/english/story/m_1.txt");
 	for(i = 0; !file.eof(); i++){
 		file.getline(captions, 128);
-		Caption(captions);
+		caption = captions;
 	}
 	file.close();
 }
@@ -160,20 +147,20 @@ void m_1newworld()
 {
 	if(script[mainscript] == 1){
 		Localize(captions, script[cutscene], "/story/m_1.txt");
-		Caption(captions);
+		caption = captions;
 		if(script[cutscene] == 2){
 			script[cutscene] = 1, script[mainscript]++;}
 		script[cutscene]++;
 	}
 	else if(script[mainscript] == 2){
 		Localize(captions, 3, "/story/m_1.txt");
-		Caption(captions);
+		caption = captions;
 		//Localize(objective, 4, "/story/m_1.txt");
 		script[0]++;
 	}
 	else if(script[mainscript] == 3 && location != safehouse1){
 		Localize(captions, 5, "/story/m_1.txt");
-		Caption(captions);
+		caption = captions;
 		script[0]++;
 	}
 	else if(script[mainscript] == 4){
@@ -186,11 +173,11 @@ void m_1newworld()
 	}
 	else if(script[0] == 5){
 		Localize(captions, 4+script[cutscene], "/story/m_1.txt");
-		Caption(captions);
+		caption = captions;
 		script[cutscene]++;
 		if(script[cutscene] == 17)
 			script[cutscene] = 1, script[mainscript]++,
-			//objective = "[���� � ������� �� ������ �����]",
+			//objective = "[ Find a new place to live ]";,
 			hr = 19, mn = 48;
 	}
 	else if(script[0] == 6){
@@ -215,7 +202,7 @@ void m_1newworld()
 		}
 		else{
 			Localize(captions, 21+script[cutscene], "/story/m_1.txt");
-			Caption(captions);
+			caption = captions;
 		}
 		script[cutscene]++;
 		if(21+script[cutscene] == 40)
@@ -236,7 +223,7 @@ void m_1newworld()
 			LoadNPC(4, 18, 25, fraction_gopnic, angry, 0, iSeeds, 5, 5);
 		}
 		Localize(captions, 40+script[cutscene], "/story/m_1.txt");
-		Caption(captions);
+		caption = captions;
 		script[cutscene]++;
 		if(script[cutscene] == 7)
 			script[cutscene] = 1, script[0]++;
@@ -249,7 +236,7 @@ void m_1newworld()
 	else if(script[mainscript] == 10)
 	{
 		Localize(captions, 50+script[cutscene], "/story/m_1.txt");
-		Caption(captions);
+		caption = captions;
 		script[cutscene]++;
 		if(script[cutscene] == 6)
 			script[cutscene] = 1, script[mainscript]++;
@@ -258,14 +245,14 @@ void m_1newworld()
 		Localize(captions, 56+script[cutscene], "/story/m_1.txt");
 		if(script[cutscene] == 1){
 			cameratype = point, cameracenter[camposY] = 12, cameracenter[camposX] = 15;
-			Caption(captions);
+			caption = captions;
 		}
 		else if(script[cutscene] == 6){
 			cameratype = actor;
-			Caption(captions);
+			caption = captions;
 		}
 		else
-			Caption(captions);
+			caption = captions;
 		
 		script[cutscene]++;
 		if(script[cutscene] == 7)
@@ -274,7 +261,7 @@ void m_1newworld()
 	else if(script[0] == 12){
 		y = 8, x = 15;
 		Localize(captions, 63+script[cutscene], "/story/m_1.txt");
-		Caption(captions);
+		caption = captions;
 		script[cutscene]++;
 		if(script[cutscene] == 6)
 			script[cutscene] = 1, script[0]++;
@@ -289,7 +276,7 @@ void m_2finding()
 {
 	if(script[0] == 1){
 		Localize(captions, script[cutscene], "/story/m_2.txt");
-		Caption(captions);
+		caption = captions;
 		script[cutscene]++;
 		if(script[cutscene] == 5)
 			script[cutscene] = 1, script[0]++;
@@ -300,20 +287,21 @@ void m_2finding()
 	}
 	else if(script[0] == 3){
 		Localize(captions, script[cutscene], "/story/m_2.txt");
+		caption = captions;
 		script[cutscene]++;
 		if(script[cutscene] == 9)
 			script[cutscene] = 1, script[0]++;
-			//objective = "����� �� ���";
+			//objective = "  ";
 	}
 	else if(script[0] == 4 && location == parkstreet){
 		//Localize("/story/m_2.txt");
-		Caption("");
+		caption = nullptr;
 		script[cutscene]++;
 		if(script[cutscene] == 3)
 			script[cutscene] = 1, script[0]++;
 	}
 	else if(script[0] == 5){
-		Caption("");
+		caption = nullptr;
 		script[0]++;
 	}
 	else if(script[0] == 6){
@@ -326,7 +314,7 @@ void m_3bottleshooter()
 	if(script[0] == 1)
 	{
 		Localize(captions, script[cutscene], "/story/m_3.txt");
-		Caption(captions);
+		caption = captions;
 		if(script[cutscene] == 1)
 			script[0]++;
 	}
@@ -337,23 +325,23 @@ void m_3bottleshooter()
 		}
 		else if(script[1] == 2){
 			Localize(captions, 2, "/story/m_3.txt");
-			Caption(captions);
+			caption = captions;
 			if(weaponslot == ranged1)
 				script[1]++;
 		}
 		else if(script[1] == 3){
 			Localize(captions, 3, "/story/m_3.txt");
-			Caption(captions);
+			caption = captions;
 			script[1]++;
 		}
 		else if(script[1] == 4){
 			Localize(captions, 4, "/story/m_3.txt");
-			Caption(captions);
+			caption = captions;
 			script[1]++;
 		}
 		else if(script[1] == 5){
 			Localize(captions, 5, "/story/m_3.txt");
-			Caption(captions);
+			caption = captions;
 			script[1]++;
 		}
 		//Training with rubber gun
@@ -375,32 +363,29 @@ void m_3bottleshooter()
 void m_4nightbrawl()
 {
 	if(hr < 22 || hr > 05){
-		Caption("Come back later at 22:00-05:00");
+		caption = "Come back later at 22:00-05:00";
 		mission = 0;
 	}
 	if(script[0] == 1){
 		Localize(captions, script[cutscene], "/story/m_5.txt");
-		Caption(captions);
+		caption = captions;
 		script[0]++;
 	}
 	else if(script[0] == 2){
-		//objective = "������� � ������ ����";
 		if(y == 30 && x == 42)
 			script[0]++;
 	}
 	else if(script[0] == 3){
-		//objective = "���� � ������ � ���������� ���";
 		if(y == 30 && x == 42)
 			script[0]++;
 	}
 	else if(script[0] == 4){
-		//objective = "�������� ������ � �������� ��� �� ��������� �����";
 		if(y == 30 && x == 42)
 			script[0]++;
 	}
 	else if(script[0] == 5){
 		Localize(captions, script[cutscene], "/story/m_5.txt");
-		Caption(captions);
+		caption = captions;
 		script[0]++;
 	}
 	else if(script[0] == 6){
@@ -416,46 +401,42 @@ void m_cuttingarms()
 	{
 		
 		Localize(captions, script[cutscene], "/story/m_6.txt");
-		Caption(captions);
+		caption = captions;
 		script[cutscene]++;
 	}
 	if(script[0] == 2){
-		//objective = "���������� ������, ���� �� ���";
 		if(y == 30 && x == 42)
 			script[0]++;
 	}
 	else if(script[0] == 3){
 		if(script[cutscene] == 3){
 			if(npc[0][npc_HP] <= 0){
-				Caption("");
+				caption = nullptr;
 				gameover = true;
 			}
 			else
-				Caption("");
+				caption = nullptr;
 		}
 		script[cutscene]++;
 	}
 	else if(script[0] == 4){
-		//objective = "���������� � �������� ������";
 		if(y == 30 && x == 42)
 			script[0]++;
 	}
 	else if(script[0] == 5){
-		Caption("");
+		caption = nullptr;
 		script[0]++;
 	}
 	else if(script[0] == 6){
-		//objective = "�������������� ������";
 		if(npc[0][npc_HP] <= 2)
 			script[0]++;
 	}
 	else if(script[0] == 7){
-		//objective = "������� ������ � ��������";
 		if(y == 30 && x == 42)
 			script[0]++;
 	}
 	else if(script[0] == 8){
-		Caption("");
+		caption = nullptr;
 		script[0]++;
 	}
 }
@@ -464,34 +445,33 @@ void m_batduel()
 	if(script[0] == 1)
 	{
 		if(skill[ApologizeTeens].ismastered == true)
-			Caption("");
+			caption = nullptr;
 		script[0]++;
 	}
 	if(script[0] == 2)
 	{
-		//objective = "����������� ������";
 		if(npc[0][npc_HP] <= 0 || npc[0][npc_attitude] != angry)
 			script[0]++;
 	}
 	if(script[0] == 3)
 	{
 		Localize(captions, script[cutscene], "/story/m_2.txt");
-		Caption(captions);
+		caption = captions;
 		script[cutscene]++;
 	}
 	if(script[0] == 4)
 	{
 		if(script[1] == 0){
 			doomerrespect += 0.2;
-			Caption("<�������� ������� +20%>");\
+			caption = "< +20%>";
 		}
 		if(script[1] == 1){
 			doomerrespect += 0.1;
-			Caption("<�������� ������� +10%>");
+			caption = "< +10%>";
 		}
 		if(script[1] == 2){
 			doomerrespect += 0.25;
-			Caption("<�������� ������� +25%>");
+			caption = "< +25%>";
 		}
 		script[0] = 0, script[1] = 0, mission = 0;
 		SaveData(0);
@@ -502,7 +482,7 @@ void m_blindkaraoke()
 	if(script[0] == 1)
 	{
 		Localize(captions, script[cutscene], "/story/m_2.txt");
-		Caption(captions);
+		caption = captions;
 	}
 	else if(script[0] == 2)
 	{
@@ -521,23 +501,20 @@ void m_artofvandalism()
 {
 	if(script[0] == 1)
 	{
-		//objective = "���� � ����";
 		weapon[5] = iPaintSpray;
 		script[0]++;
 	}
 	else if(script[0] == 2)
 	{
-		//objective = "���������� ������ � ����";
 		script[0]++;
 	}
 	else if(script[0] == 3)
 	{
-		//objective = "������� ������ �� ������";
 		script[0]++;
 	}
 	else if(script[0] == 4)
 	{
-		Caption("<+1000 ������>");
+		caption = "<+1000>";
 		money += 1000;
 		mission = 0, script[0] = 0;
 		SaveData(0);
@@ -556,20 +533,17 @@ void m_spit()
 				money -= 200;
 		}
 		Localize(captions, script[cutscene], "/story/m_20.txt");
-		Caption(captions);
+		caption = captions;
 		script[cutscene]++;
 	}
 	else if(script[0] == 2){
-		//objective = "��������� �� ����������� ������";
 		script[0]++;
 	}
 	else if(script[0] == 3){
-		//objective = "���������� � ����";
 		if(location != mountaintop)
 			script[0]++;
 	}
 	else if(script[0] == 4){
-		//objective = "�������� ����";
 		if(location == mountainstreet_playgrounds)
 			script[0]++;
 	}
@@ -598,13 +572,13 @@ void m_sunrise()
 	}
 	else if(script[0] == 5){
 		money += 5000;
-		//Caption("<+5000 ������>");
+		//caption = "<+5000>";
 		doomerrespect += 0.75, geekrespect += 0.75,
 		zoomerrespect += 0.75, gopnicrespect += 0.75;
-		//Caption("<��������� ���� �� +75%>");
-		//Caption("");
+		//caption = "<  +75%>";
+		//caption = "";
 		TotalResults();
-		//Caption("");
+		//caption = "";
 		mission = 0, script[0] = 1;
 		SaveData(0);
 	}

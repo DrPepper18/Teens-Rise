@@ -12,8 +12,8 @@ using namespace std;
 
 //Video Settings
 int sizeX = 20, sizeY = 7;
-int HUDOnScreen = 1;
-int HintsOnScreen = 1;
+bool HUDOnScreen = true;
+bool HintsOnScreen = true;
 int framedelay = 50;
 
 int colorback[64][64], colorfront[64][64];
@@ -23,7 +23,6 @@ int screentop, screenbottom, screenleft, screenright;
 int lightingmap[256][256],
 	lightsource[32][4],		//0 - power of light; 1 - Y; 2 - X; 3 - radius
 	light = 0;				//Default lightning
-char *quote;
 
 void GameOverScreen()
 {
@@ -218,59 +217,61 @@ void CameraSetup()
 }
 void HUD()
 {
-	int i;
-	int hpcolor, energycolor;
-	Color(0,15);
-	cout << "\t\t\t[";
-	for(i = 0; ; i++)
+    static char health_buffer[64]; 
+    static char weapon_buffer[32];
+	static char time_buffer[8];
+
+    int bar_limit = (FullHP > 60) ? 60 : (int)FullHP;
+
+    health_buffer[0] = '[';
+    for(int i = 1; i <= bar_limit; i++)
+    {
+        health_buffer[i] = (i <= HP) ? '#' : ' ';
+    }
+    health_buffer[bar_limit + 1] = ']';
+    health_buffer[bar_limit + 2] = '\0';
+
+    const char* w_name = item[weapon[weaponslot]].name;
+    weapon_buffer[0] = '[';
+    int i = 0;
+    while(w_name[i] != '\0' && i < 29) {
+        weapon_buffer[i+1] = w_name[i];
+        i++;
+    }
+    weapon_buffer[i+1] = ']';
+    weapon_buffer[i+2] = '\0';
+
+	time_buffer[0] = '[';
+	if (hr >= 10)
 	{
-		hpcolor = 0, energycolor = 0;
-		if(i >= FullHP && i >= stamina)
-			break;
-
-		if(i < HP)
-			hpcolor = 2;
-		if(i < energy)
-			energycolor = 15;
-		else if(HP - i > FullHP)
-			hpcolor = 10;
-
-		Color(hpcolor, energycolor);
-
-		if(i < stamina)
-			cout << "_";
-		else
-			cout << " ";
+		time_buffer[1] = '0' + hr / 10;
+		time_buffer[2] = '0' + hr % 10;
 	}
-	Color(0, 15);
-	cout << "] ";
-	if(weapon[weaponslot] != 0){
-		cout << "[" << item[weapon[weaponslot]].name;
-		if(weapon[weaponslot] == iWaterGun)
-			cout << "(" << water << ")";
-		else if(weapon[weaponslot] == iPaintSpray){
-			Color(13,0);
-			cout << " ";
-			Color(0,15);
-		}
-		cout << "] ";
+	else
+	{
+		time_buffer[1] = '0';
+		time_buffer[2] = '0' + hr;
 	}
-	cout << "[" << hr << ":";
-	if(mn < 10)	cout << "0";
-	cout << mn << "]\t\t";
-	Color(0,0);
-	if(wantedlevel > 0)
-		Color(0, 9);
-	cout << wantedlevel << endl;
-	Color(0,15);
-	//cout << "[Y " << y << ";X " << x << "   " << LocationName[location] << "(" << MapSizeY << "x" << MapSizeX << ")]" << endl;
-	//cout << "Performance:" << op << endl;
+	time_buffer[3] = ':';
+	if (mn >= 10)
+	{
+		time_buffer[4] = '0' + mn / 10;
+		time_buffer[5] = '0' + mn % 10;
+	}
+	else
+	{
+		time_buffer[4] = '0';
+		time_buffer[5] = '0' + mn;
+	}
+	time_buffer[6] = ']';
+	time_buffer[7] = '\0';
+
+    TextOutput(screen, health_buffer, sizeY*2-2, 1, 0, 15, bar_limit + 2);
+    TextOutput(screen, weapon_buffer, sizeY*2-2, (int)(FullHP+4), 0, 15, i + 2);
+    TextOutput(screen, time_buffer, sizeY*2-2, (int)(FullHP+i+7), 0, 15, 8);
 }
-void Hint()
-{/*
-	
-*/}
-void Render(short int map[256][256])
+void Hint() {}
+void Render(int map[256][256])
 {
 	int j, i, a, b;
 	screentop = cameracenter[camposY] - sizeY, screenbottom = cameracenter[camposY] + sizeY, 
@@ -284,7 +285,7 @@ void Render(short int map[256][256])
 			if(j < 0 || i < 0 || j >= MapSizeY || i >= MapSizeX){
 				screen[a][b] = ' ', colorback[a][b] = 0, colorfront[a][b] = 0;
 			}
-			else{
+			else {
 				screen[a][b] = objectmodel[map[j][i]][1], colorfront[a][b] = objectmodel[map[j][i]][3];
 				if(objectmodel[map[j][i]][2] != 16)
 					colorback[a][b] = objectmodel[map[j][i]][2];
@@ -305,7 +306,7 @@ void Render(short int map[256][256])
 		screen[a][b] = '+', colorfront[a][b] = 15;
 	//TextOutput(screen, colorback, colorfront, subtitle, sizeY * 2 - 3, 3, 0, 15, 32);
 }
-void DrawFrame()
+void DrawFrame(char screen[64][64])
 {
 	const int SCREEN_WIDTH = sizeX * 2;
 	const int SCREEN_HEIGHT = sizeY * 2;
@@ -322,34 +323,19 @@ void DrawFrame()
     SMALL_RECT writeRegion = { 0, 0, (short)(SCREEN_WIDTH - 1), (short)(SCREEN_HEIGHT - 1) };
     WriteConsoleOutput(hConsole, consoleBuffer, bufferSize, bufferCoord, &writeRegion);
     framemodulus = (framemodulus + 1) % 10;
+	Sleep(framedelay);
 }
-void DrawWindow(char UI[64][64])
-{
-	const int SCREEN_WIDTH = 37;
-	const int SCREEN_HEIGHT = 14;
-	CHAR_INFO consoleBuffer[SCREEN_HEIGHT * SCREEN_WIDTH];
-	for (int j = 0; j < SCREEN_HEIGHT; j++) {
-        for (int i = 0; i < SCREEN_WIDTH; i++) {
-            int index = j * SCREEN_WIDTH + i;
-            consoleBuffer[index].Char.AsciiChar = UI[j][i];
-            consoleBuffer[index].Attributes = (colorback[j][i] << 4) | colorfront[j][i];
-        }
-    }
-	COORD bufferSize = { (short)SCREEN_WIDTH, (short)SCREEN_HEIGHT };
-    COORD bufferCoord = { 0, 0 };
-    SMALL_RECT writeRegion = { 0, 0, (short)(SCREEN_WIDTH - 1), (short)(SCREEN_HEIGHT - 1) };
-    WriteConsoleOutput(hConsole, consoleBuffer, bufferSize, bufferCoord, &writeRegion);
-}
-void Video(short int map[256][256])
+void Video(int map[256][256])
 {
 	CameraSetup();
 	Render(map);
-	DrawFrame();
-	// if(HUDOnScreen == 1)
-	// 	HUD();
+	if(caption) {
+		TextOutput(screen, caption, sizeY * 2 - 3, 3, 0, 15, 32);
+		TextOutput(screen, "[Enter] - Next", sizeY * 2 - 2, 3, 0, 15, 32);
+	}
+	else if(HUDOnScreen)
+		HUD();
 	// if(GetAsyncKeyState(Keyboard[Aim]))
 	// 	NPCBarOutput(1);
-	// else
-	// 	cout << "\t\t";
-	Sleep(framedelay);
+	DrawFrame(screen);
 }

@@ -206,7 +206,7 @@ void KeyboardInput()
 	}
 	if(LockOn != 0 && GetAsyncKeyState('E'))
 	{
-		Caption(line[player][compliment]);
+		caption = line[player][compliment];
 		if(skill[ApologizeTeens].ismastered)
 			geekheat = 0, doomerheat = 0, gopnicheat = 0;
 		else if(skill[ApologizePolice].ismastered)
@@ -214,8 +214,7 @@ void KeyboardInput()
 	}
 	if(LockOn != 0 && GetAsyncKeyState('C'))
 	{
-		Caption(line[player][taunt]);
-		Caption(line[npc[LockOn][npc_fraction]][anger]);
+		caption = line[player][taunt];
 		npc[LockOn][npc_attitude] = angry;
 		wantedlevel += stronglanguage.wantedlevel;
 		if(wantedlevel > 3)
@@ -236,8 +235,18 @@ void KeyboardInput()
 }
 void Input()
 {
-	if(InputDevice == keyboard)
+	if(!caption) {
+		if(InputDevice == keyboard)
 		KeyboardInput();
 	else if(InputDevice == Xbox_gamepad)
 		XboxControllerInput();
+	} else {
+		while(1){
+			Sleep(100);
+			if(GetAsyncKeyState(Enter) || GetAsyncKeyState(VK_LBUTTON)){
+				caption = nullptr;
+				break;
+			}
+		}
+	}
 }

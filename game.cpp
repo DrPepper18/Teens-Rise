@@ -178,7 +178,7 @@ void ControlsSettings()
 		UI[MouseY][MouseX] = '+';
 		colorfront[MouseY][MouseX] = 12;
 
-		DrawWindow(UI);
+		DrawFrame(UI);
 
 		if(!click)
 		{
@@ -365,7 +365,7 @@ void Settings()
 		UI[MouseY][MouseX] = '+';
 		colorfront[MouseY][MouseX] = 12;
 
-		DrawWindow(UI);
+		DrawFrame(UI);
 		cout << "Frame delay - " << framedelay << "ms";
 
 		if (MouseX < 20 && MouseY >= 2 && MouseY <= 5)
@@ -525,7 +525,7 @@ void Shop(int catalog[32])
 				else
 					colorfront[j][i] = 15;
 			}
-		DrawWindow(UI);
+		DrawFrame(UI);
 		//Input
 		if(GetAsyncKeyState(Esc)){
 			system("cls");
@@ -620,7 +620,7 @@ void ItemBoxScreen()
 			TextOutput(UI, item[inventory[pointerY*3+pointerX]].name, 10,4, 0,15, sizeX*2-4);
 			TextOutput(UI, item[inventory[pointerY*3+pointerX]].description, 12,4, 0,15, sizeX*2-4);
 		}
-		DrawWindow(UI);
+		DrawFrame(UI);
 		
 		if(GetAsyncKeyState(Esc))
 			return;
@@ -743,7 +743,7 @@ void InventoryScreen()
 		UI[MouseY][MouseX] = '+';
 		colorfront[MouseY][MouseX] = 12;
 
-		DrawWindow(UI);
+		DrawFrame(UI);
 		cout << HUD << Health << Stamina;
 		if ((MouseY >= 4 && MouseY <= 6) && (MouseX >= 2 && MouseX <= 11)) {
 			pointerY = MouseY - 4, pointerX = (MouseX - 2) / 3;
@@ -893,7 +893,7 @@ void DataScreen(int option) //0 is for saving; 1 is for loading
 		UI[MouseY][MouseX] = '+';
 		colorfront[MouseY][MouseX] = 12;
 
-		DrawWindow(UI);
+		DrawFrame(UI);
 
 		if (MouseX < 20 && MouseY >= 2 && MouseY <= 6)
 			pointer = MouseY - 2;
@@ -968,7 +968,7 @@ void pause()
 		UI[MouseY][MouseX] = '+';
 		colorfront[MouseY][MouseX] = 12;
 
-		DrawWindow(UI);
+		DrawFrame(UI);
 
 		if (MouseX < 20 && MouseY >= 2 && MouseY <= 6)
 			pointer = MouseY - 1;
@@ -1196,7 +1196,7 @@ void Phone()
 			if(UI[j][i] != '#' && app == desktop)
 				colorback[j][i] = 15, colorfront[j][i] = 0;
 
-		DrawWindow(UI);
+		DrawFrame(UI);
 
 		//Input
 		if(app == 0)
@@ -1492,7 +1492,7 @@ void LogicPlayer()
 	if(HP <= 0)
 		gameover = true;
 }
-void Logic()
+int Logic()
 {
 	int prevlocation = location;
 	if(paused)
@@ -1502,8 +1502,11 @@ void Logic()
 	LogicWorld();
 	LogicPlayer();
 	LocationSwitch();
-	if(location != prevlocation)
+	if(location != prevlocation) {
+		cout << ""; // DO NOT REMOVE THIS LINE, IT PREVENTS A BUG WITH MAP LOADING
 		LocationPrep();
+		return 2;
+	}
 }
 void UpdateMap()
 {
@@ -1516,16 +1519,7 @@ void UpdateMap()
 
 void Briefing()
 {
-	/*if(mission == newworld)
-		cout << "...���� ���� � ����� ������!..." << endl;
-	else if(mission == geeksquad)
-		cout << "...�...� �����..." << endl;
-	else if(mission == nightbrawl)
-		cout << "...�� �������, �����..." << endl;
-	else if(mission == spit)
-		cout << "...�� � ���� �������..." << endl;
-	else if(mission == sunrise)
-		cout << "...������� �����?..." << endl;*/
+	cout << "Loading..." << endl;
 	Sleep(450);
 }
 void game()
@@ -1533,12 +1527,9 @@ void game()
 	Color(0,15);
 	system("cls");
 	Briefing();
-	//PlaySound(L"audio/ost/test.wav", NULL, SND_FILENAME | SND_ASYNC | SND_NODEFAULT);
 	while(1)
 	{
 		system("cls");
-
-		//LoadObjects(0);
 		gameover = false;
 
 		if(skill[StaminaLvl1].ismastered)
@@ -1553,16 +1544,18 @@ void game()
 		while(1)
 		{
 			op = 0;
-			UpdateMap();//Setting up
+			UpdateMap(); // Setting up
 			LightMapLoad();
 			Update();
 
-			Video(loadedmap);//Output
-			Audio();
-
-			Logic();//Game actions and logic
+			if(Logic() == 2) { // Game actions and logic
+				continue;
+			}
 			AI();
 			Physics();
+
+			Video(loadedmap); // Output
+			Audio();
 
 			if(gameover){
 				Sleep(1500);
@@ -1572,7 +1565,7 @@ void game()
 			else if(restart || mainmenu)
 				break;
 
-			Input();//Input
+			Input(); // Input
 		}
 	}
 }
@@ -1635,7 +1628,7 @@ void menu()
 		UI[MouseY][MouseX] = '+';
 		colorfront[MouseY][MouseX] = 12;
 
-		DrawWindow(UI);
+		DrawFrame(UI);
 
 		if (MouseX >= 20 && MouseY >= 2 && MouseY <= 5)
 			pointer = MouseY - 1;
